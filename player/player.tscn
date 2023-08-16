@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://1o1nbx5ls5j7"]
+[gd_scene load_steps=12 format=3 uid="uid://1o1nbx5ls5j7"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
+[ext_resource type="Texture2D" uid="uid://d3smm0swdctp3" path="res://player/player.png" id="2_ipl1b"]
 [ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
 [ext_resource type="Script" path="res://player/states/idle.gd" id="3_l0tvf"]
 [ext_resource type="Script" path="res://player/states/attack.gd" id="4_a4yi7"]
@@ -8,8 +9,50 @@
 [ext_resource type="Script" path="res://player/states/attack/active.gd" id="6_lqf85"]
 [ext_resource type="Script" path="res://player/states/attack/recovery.gd" id="7_uxys0"]
 
+[sub_resource type="Animation" id="Animation_ldfrm"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.025, 0.975), Vector2(0.975, 1.025)]
+}
+
+[sub_resource type="Animation" id="Animation_n7a5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ds1k6"]
+_data = {
+"Idle": SubResource("Animation_ldfrm"),
+"RESET": SubResource("Animation_n7a5x")
+}
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_vosrb")
+
+[node name="Player" type="Sprite2D" parent="."]
+texture = ExtResource("2_ipl1b")
+offset = Vector2(0, -180)
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_x2itd")
@@ -29,3 +72,10 @@ script = ExtResource("6_lqf85")
 
 [node name="Recovery" type="Node" parent="StateMachine/Attack"]
 script = ExtResource("7_uxys0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_ds1k6")
+}
