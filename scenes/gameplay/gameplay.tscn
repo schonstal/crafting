@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b11l2h1ap31xm"]
+
+[ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
+[ext_resource type="PackedScene" uid="uid://6p0su8necw3n" path="res://forge/forge.tscn" id="2_b8ldk"]
+[ext_resource type="PackedScene" uid="uid://1o1nbx5ls5j7" path="res://player/player.tscn" id="3_b5cdq"]
+
+[sub_resource type="Environment" id="Environment_juftt"]
+background_mode = 3
+tonemap_mode = 3
+glow_enabled = true
+
+[node name="Gameplay" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(598, 335)
+scale = Vector2(1.0067, 0.993715)
+texture = ExtResource("1_wnkns")
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Forge" parent="." instance=ExtResource("2_b8ldk")]
+
+[node name="Player" parent="." instance=ExtResource("3_b5cdq")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_juftt")
