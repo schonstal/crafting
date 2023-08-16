@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=8 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
-[ext_resource type="PackedScene" uid="uid://6p0su8necw3n" path="res://forge/forge.tscn" id="2_b8ldk"]
+[ext_resource type="PackedScene" uid="uid://cjry6xo4ksbhv" path="res://forge/forge.tscn" id="2_b8ldk"]
 [ext_resource type="PackedScene" uid="uid://1o1nbx5ls5j7" path="res://player/player.tscn" id="3_b5cdq"]
 
 [sub_resource type="Environment" id="Environment_juftt"]
@@ -9,12 +9,30 @@ background_mode = 3
 tonemap_mode = 3
 glow_enabled = true
 
+[sub_resource type="Gradient" id="Gradient_gxdta"]
+offsets = PackedFloat32Array(0.0197044, 0.157635, 0.837438, 1)
+colors = PackedColorArray(0.837764, 0.870076, 0.474632, 1, 0.757814, 0.39705, 0.140025, 1, 0.399745, 0.279591, 0.141892, 1, 0.166853, 0.166853, 0.166853, 0.67451)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6y0en"]
+gradient = SubResource("Gradient_gxdta")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_caph0"]
+emission_shape = 3
+emission_box_extents = Vector3(300, 20, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, -1000, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color_ramp = SubResource("GradientTexture1D_6y0en")
+turbulence_enabled = true
+
 [node name="Gameplay" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(598, 335)
 scale = Vector2(1.0067, 0.993715)
 texture = ExtResource("1_wnkns")
+metadata/_edit_lock_ = true
 
 [node name="Environment" type="Node2D" parent="."]
 
@@ -24,3 +42,9 @@ texture = ExtResource("1_wnkns")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_juftt")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(339, 423)
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_caph0")
