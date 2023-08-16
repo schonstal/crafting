@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://1o1nbx5ls5j7"]
+[gd_scene load_steps=14 format=3 uid="uid://c2tc12uawayb0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Texture2D" uid="uid://d3smm0swdctp3" path="res://player/player.png" id="2_ipl1b"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://player/states/attack/startup.gd" id="5_2qxj1"]
 [ext_resource type="Script" path="res://player/states/attack/active.gd" id="6_lqf85"]
 [ext_resource type="Script" path="res://player/states/attack/recovery.gd" id="7_uxys0"]
+[ext_resource type="Script" path="res://player/command_input_reader.gd" id="9_m3fhh"]
 
 [sub_resource type="Animation" id="Animation_ldfrm"]
 resource_name = "Idle"
@@ -23,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.025, 0.975), Vector2(0.975, 1.025)]
+"values": [Vector2(1, 1), Vector2(0.99, 1.01)]
 }
 
 [sub_resource type="Animation" id="Animation_n7a5x"]
@@ -41,10 +42,14 @@ tracks/0/keys = {
 "values": [Vector2(1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_7lxud"]
+resource_name = "Strike"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ds1k6"]
 _data = {
 "Idle": SubResource("Animation_ldfrm"),
-"RESET": SubResource("Animation_n7a5x")
+"RESET": SubResource("Animation_n7a5x"),
+"Strike": SubResource("Animation_7lxud")
 }
 
 [node name="Player" type="Node2D"]
@@ -75,7 +80,9 @@ script = ExtResource("7_uxys0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_ds1k6")
 }
+
+[node name="CommandInputReader" type="Node" parent="."]
+script = ExtResource("9_m3fhh")
