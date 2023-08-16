@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://1o1nbx5ls5j7"]
+[gd_scene load_steps=8 format=3 uid="uid://1o1nbx5ls5j7"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
+[ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
+[ext_resource type="Script" path="res://player/states/idle.gd" id="3_l0tvf"]
+[ext_resource type="Script" path="res://player/states/attack.gd" id="4_a4yi7"]
+[ext_resource type="Script" path="res://player/states/attack/startup.gd" id="5_2qxj1"]
+[ext_resource type="Script" path="res://player/states/attack/active.gd" id="6_lqf85"]
+[ext_resource type="Script" path="res://player/states/attack/recovery.gd" id="7_uxys0"]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_vosrb")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_x2itd")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_l0tvf")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("4_a4yi7")
+
+[node name="Startup" type="Node" parent="StateMachine/Attack"]
+script = ExtResource("5_2qxj1")
+
+[node name="Active" type="Node" parent="StateMachine/Attack"]
+script = ExtResource("6_lqf85")
+
+[node name="Recovery" type="Node" parent="StateMachine/Attack"]
+script = ExtResource("7_uxys0")
