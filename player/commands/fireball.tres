@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Command" load_steps=2 format=3 uid="uid://b8s4icymka1pw"]
+
+[ext_resource type="Script" path="res://player/commands/command.gd" id="1_v5j72"]
+
+[resource]
+script = ExtResource("1_v5j72")
+animation = "Fireball"
+input_sequence = ["down", "down,right", "right", "strike"]
+priority = 1
