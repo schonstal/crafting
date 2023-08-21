@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=34 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Texture2D" uid="uid://ba3asw1l7jeq7" path="res://player/sketchse.png" id="2_pgqb2"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://player/states/attack/up/light.gd" id="18_vbtkc"]
 [ext_resource type="Script" path="res://player/states/attack/down/heavy.gd" id="20_dfwqf"]
 [ext_resource type="Script" path="res://player/states/attack/down/light.gd" id="21_jnhhx"]
+[ext_resource type="Texture2D" uid="uid://dqkpeywklc1w" path="res://player/BlacksmithIdle.png" id="24_r3bfi"]
 
 [sub_resource type="Animation" id="Animation_n51ys"]
 resource_name = "Down"
@@ -186,6 +187,7 @@ _data = {
 script = ExtResource("1_vosrb")
 
 [node name="Player" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_pgqb2")
 offset = Vector2(0, -180)
 hframes = 5
@@ -260,3 +262,7 @@ script = ExtResource("21_jnhhx")
 
 [node name="CommandInputReader" type="Node" parent="."]
 script = ExtResource("9_m3fhh")
+
+[node name="BlacksmithIdle" type="Sprite2D" parent="."]
+position = Vector2(-16, -187)
+texture = ExtResource("24_r3bfi")

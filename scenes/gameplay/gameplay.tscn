@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=28 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
 [ext_resource type="PackedScene" uid="uid://cjry6xo4ksbhv" path="res://forge/forge.tscn" id="2_b8ldk"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://bff8orailr7kw" path="res://UI/HeatGaugeDisplay.png" id="12_6kffu"]
 [ext_resource type="Texture2D" uid="uid://dho76uylx1e0m" path="res://UI/HeatGaugeNeedle.png" id="13_ln8l1"]
 [ext_resource type="Texture2D" uid="uid://cx36dct8c121w" path="res://UI/HeatGaugeFrame.png" id="14_pfmkh"]
+[ext_resource type="Shader" path="res://scenes/gameplay/paper_texture.gdshader" id="16_b2nmg"]
+[ext_resource type="Texture2D" uid="uid://b12xa4qmqc6d3" path="res://scenes/gameplay/Vintage_Paper_Texture_(9789792113).jpg" id="17_mr81x"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_brd48"]
 blend_mode = 1
@@ -130,10 +132,12 @@ background_mode = 3
 glow_enabled = true
 glow_strength = 1.43
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwhga"]
+shader = ExtResource("16_b2nmg")
+
 [node name="Gameplay" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(1.0067, 0.993715)
 texture = ExtResource("1_wnkns")
 centered = false
 metadata/_edit_lock_ = true
@@ -229,3 +233,8 @@ texture = ExtResource("14_pfmkh")
 environment = SubResource("Environment_juftt")
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PaperOverlay" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jwhga")
+position = Vector2(661, -352)
+texture = ExtResource("17_mr81x")
