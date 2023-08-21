@@ -1,15 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=32 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Texture2D" uid="uid://ba3asw1l7jeq7" path="res://player/sketchse.png" id="2_pgqb2"]
 [ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
 [ext_resource type="Script" path="res://player/states/idle.gd" id="3_l0tvf"]
 [ext_resource type="Script" path="res://player/states/attack.gd" id="4_a4yi7"]
-[ext_resource type="Script" path="res://player/states/direction.gd" id="5_wa4u3"]
-[ext_resource type="Script" path="res://player/states/direction/left.gd" id="6_dkeu4"]
-[ext_resource type="Script" path="res://player/states/direction/right.gd" id="7_r8psy"]
-[ext_resource type="Script" path="res://player/states/direction/up.gd" id="8_xlegl"]
-[ext_resource type="Script" path="res://player/states/direction/down.gd" id="9_gix8w"]
 [ext_resource type="Script" path="res://player/command_input_reader.gd" id="9_m3fhh"]
 [ext_resource type="Script" path="res://player/states/attack/left.gd" id="10_a1j1p"]
 [ext_resource type="Script" path="res://player/states/attack/right.gd" id="11_puf2u"]
@@ -20,7 +15,10 @@
 [ext_resource type="Script" path="res://player/states/attack/right/heavy.gd" id="14_5pu3y"]
 [ext_resource type="Script" path="res://player/states/attack/right/light.gd" id="15_nm503"]
 [ext_resource type="Script" path="res://player/states/attack/up/heavy.gd" id="17_5wsvr"]
+[ext_resource type="Script" path="res://player/states/attack/neutral.gd" id="18_gaxoc"]
 [ext_resource type="Script" path="res://player/states/attack/up/light.gd" id="18_vbtkc"]
+[ext_resource type="Script" path="res://player/states/attack/neutral/heavy.gd" id="19_vegu5"]
+[ext_resource type="Script" path="res://player/states/attack/neutral/light.gd" id="20_3xaxq"]
 [ext_resource type="Script" path="res://player/states/attack/down/heavy.gd" id="20_dfwqf"]
 [ext_resource type="Script" path="res://player/states/attack/down/light.gd" id="21_jnhhx"]
 [ext_resource type="Texture2D" uid="uid://dqkpeywklc1w" path="res://player/BlacksmithIdle.png" id="24_r3bfi"]
@@ -187,7 +185,6 @@ _data = {
 script = ExtResource("1_vosrb")
 
 [node name="Player" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("2_pgqb2")
 offset = Vector2(0, -180)
 hframes = 5
@@ -205,21 +202,6 @@ initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_l0tvf")
-
-[node name="Direction" type="Node" parent="StateMachine"]
-script = ExtResource("5_wa4u3")
-
-[node name="Left" type="Node" parent="StateMachine/Direction"]
-script = ExtResource("6_dkeu4")
-
-[node name="Right" type="Node" parent="StateMachine/Direction"]
-script = ExtResource("7_r8psy")
-
-[node name="Up" type="Node" parent="StateMachine/Direction"]
-script = ExtResource("8_xlegl")
-
-[node name="Down" type="Node" parent="StateMachine/Direction"]
-script = ExtResource("9_gix8w")
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("4_a4yi7")
@@ -260,9 +242,19 @@ script = ExtResource("20_dfwqf")
 [node name="Light" type="Node" parent="StateMachine/Attack/Down"]
 script = ExtResource("21_jnhhx")
 
+[node name="Neutral" type="Node" parent="StateMachine/Attack"]
+script = ExtResource("18_gaxoc")
+
+[node name="Heavy" type="Node" parent="StateMachine/Attack/Neutral"]
+script = ExtResource("19_vegu5")
+
+[node name="Light" type="Node" parent="StateMachine/Attack/Neutral"]
+script = ExtResource("20_3xaxq")
+
 [node name="CommandInputReader" type="Node" parent="."]
 script = ExtResource("9_m3fhh")
 
 [node name="BlacksmithIdle" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-16, -187)
 texture = ExtResource("24_r3bfi")

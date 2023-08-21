@@ -1,8 +1,3 @@
-# meta-name: Empty nested state machine state
-# meta-description: A state with methods that call parent methods
-# meta-default: true
-# meta-space-indent: 2
-
 extends State
 
 # Basic state.
@@ -22,3 +17,4 @@ func enter(msg:Dictionary = {}) -> void:
 
 func exit() -> void:
   _parent.exit()
+

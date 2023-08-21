@@ -3,6 +3,7 @@ extends State
 @onready var animation_player:AnimationPlayer = %AnimationPlayer
 
 func _process(delta: float) -> void:
+  var direction = "Neutral"
   if Input.get_axis("down", "up") > 0:
     _state_machine.transition_to("Idle/Up")
   elif Input.get_axis("down", "up") < 0:

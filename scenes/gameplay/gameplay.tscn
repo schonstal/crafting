@@ -127,13 +127,13 @@ orbit_velocity_max = 0.0
 color_ramp = SubResource("GradientTexture1D_6y0en")
 turbulence_enabled = true
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwhga"]
+shader = ExtResource("16_b2nmg")
+
 [sub_resource type="Environment" id="Environment_juftt"]
 background_mode = 3
 glow_enabled = true
 glow_strength = 1.43
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwhga"]
-shader = ExtResource("16_b2nmg")
 
 [node name="Gameplay" type="Node2D"]
 
@@ -229,12 +229,12 @@ offset = Vector2(0, -15)
 position = Vector2(76, 453)
 texture = ExtResource("14_pfmkh")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_juftt")
-
-[node name="UI" type="CanvasLayer" parent="."]
-
 [node name="PaperOverlay" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_jwhga")
 position = Vector2(661, -352)
 texture = ExtResource("17_mr81x")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_juftt")
+
+[node name="UI" type="CanvasLayer" parent="."]

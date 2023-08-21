@@ -1,12 +1,9 @@
-# meta-name: Empty nested state machine state
-# meta-description: A state with methods that call parent methods
-# meta-default: true
-# meta-space-indent: 2
-
+class_name AttackState
 extends State
 
-# Basic state.
-# _parent function calls should only be used if this is a sub state
+@export var animation = "Neutral.Light"
+
+@onready var animation_player:AnimationPlayer = %AnimationPlayer
 
 func _unhandled_input(event:InputEvent) -> void:
   _parent._unhandled_input(event)
@@ -18,7 +15,9 @@ func _process(delta:float) -> void:
   _parent._process(delta)
 
 func enter(msg:Dictionary = {}) -> void:
+  animation_player.play(animation)
   _parent.enter(msg)
 
 func exit() -> void:
   _parent.exit()
+

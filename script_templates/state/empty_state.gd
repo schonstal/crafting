@@ -18,7 +18,7 @@ func _physics_process(delta:float) -> void:
 
 func _process(delta:float) -> void:
   pass
-  #_parent._physics_process(delta)
+  #_parent._process(delta)
 
 func enter(msg:Dictionary = {}) -> void:
   pass

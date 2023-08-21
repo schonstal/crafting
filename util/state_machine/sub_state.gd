@@ -1,4 +1,4 @@
-class_name SubState
+class_name SubState 
 extends State
 
 func enter(msg:Dictionary = {}) -> void:
