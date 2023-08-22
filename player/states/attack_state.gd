@@ -20,6 +20,7 @@ func enter(msg:Dictionary = {}) -> void:
   _parent.enter(msg)
 
 func exit() -> void:
+  animation_player.animation_finished.disconnect(attack_complete)
   _parent.exit()
 
 func attack_complete(_name:String) -> void:

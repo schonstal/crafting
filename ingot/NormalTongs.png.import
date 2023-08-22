@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgxg8e1coegky"
-path="res://.godot/imported/HotTongs.png-d2117902c862f8f217a2b8c797ebd294.ctex"
+uid="uid://t1e1xc8ov7f1"
+path="res://.godot/imported/NormalTongs.png-81bc9ea2f6854b9ae51ffc4d1686190a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://piece/HotTongs.png"
-dest_files=["res://.godot/imported/HotTongs.png-d2117902c862f8f217a2b8c797ebd294.ctex"]
+source_file="res://ingot/NormalTongs.png"
+dest_files=["res://.godot/imported/NormalTongs.png-81bc9ea2f6854b9ae51ffc4d1686190a.ctex"]
 
 [params]
 

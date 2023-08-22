@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t1e1xc8ov7f1"
-path="res://.godot/imported/NormalTongs.png-516756921d94dd25f1cf4cf9b7a9f4f2.ctex"
+uid="uid://uw22tlbwr1ye"
+path="res://.godot/imported/thermometer.png-92635a0cc3c8315a6777edd0090327ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://piece/NormalTongs.png"
-dest_files=["res://.godot/imported/NormalTongs.png-516756921d94dd25f1cf4cf9b7a9f4f2.ctex"]
+source_file="res://ingot/meter/thermometer.png"
+dest_files=["res://.godot/imported/thermometer.png-92635a0cc3c8315a6777edd0090327ba.ctex"]
 
 [params]
 

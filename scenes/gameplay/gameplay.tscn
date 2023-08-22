@@ -1,7 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=28 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
-[ext_resource type="PackedScene" uid="uid://cjry6xo4ksbhv" path="res://forge/forge.tscn" id="2_b8ldk"]
 [ext_resource type="Texture2D" uid="uid://djknp8gslkfww" path="res://player/frames/player_atlas.png" id="3_3ud6d"]
 [ext_resource type="PackedScene" uid="uid://ckpi8c0ctwu7s" path="res://player/player.tscn" id="3_b5cdq"]
 [ext_resource type="Texture2D" uid="uid://28t167ppbjcv" path="res://forge/Kiln.png" id="4_580f8"]
@@ -147,8 +146,6 @@ texture = ExtResource("1_wnkns")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="Forge" parent="." instance=ExtResource("2_b8ldk")]
-
 [node name="BlacksmithIdle" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(831, 410)
@@ -244,3 +241,9 @@ metadata/_edit_lock_ = true
 environment = SubResource("Environment_juftt")
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ActiveCombo" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
