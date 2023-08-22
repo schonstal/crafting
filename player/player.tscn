@@ -1,27 +1,129 @@
-[gd_scene load_steps=32 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=52 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
-[ext_resource type="Texture2D" uid="uid://ba3asw1l7jeq7" path="res://player/sketchse.png" id="2_pgqb2"]
+[ext_resource type="Texture2D" uid="uid://dco21663y7w71" path="res://player/frames/back_heavy/BackHeavy0001.png" id="2_o70lk"]
 [ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
+[ext_resource type="Texture2D" uid="uid://bv5hfs4lsbc24" path="res://player/frames/back_heavy/BackHeavy0002.png" id="3_4p2id"]
 [ext_resource type="Script" path="res://player/states/idle.gd" id="3_l0tvf"]
+[ext_resource type="Texture2D" uid="uid://c2hh6ae1qi1lt" path="res://player/frames/back_heavy/BackHeavy0003.png" id="4_2hu4w"]
 [ext_resource type="Script" path="res://player/states/attack.gd" id="4_a4yi7"]
+[ext_resource type="Texture2D" uid="uid://g7cqpgygb1ri" path="res://player/frames/back_heavy/BackHeavy0004.png" id="5_kv5pw"]
+[ext_resource type="Texture2D" uid="uid://581xy478qx2u" path="res://player/frames/back_heavy/BackHeavy0005.png" id="6_sis1y"]
+[ext_resource type="Texture2D" uid="uid://dalol5s3p65lb" path="res://player/frames/back_heavy/BackHeavy0006.png" id="7_ll0sm"]
+[ext_resource type="Texture2D" uid="uid://ccb3476pjh2cb" path="res://player/frames/back_light/BackLight0001.png" id="8_ieh42"]
+[ext_resource type="Texture2D" uid="uid://cg5hgu3hi0v6s" path="res://player/frames/back_light/BackLight0002.png" id="9_6i5pt"]
 [ext_resource type="Script" path="res://player/command_input_reader.gd" id="9_m3fhh"]
 [ext_resource type="Script" path="res://player/states/attack/left.gd" id="10_a1j1p"]
+[ext_resource type="Texture2D" uid="uid://ey363mbl1uat" path="res://player/frames/back_light/BackLight0003.png" id="10_l4vv3"]
 [ext_resource type="Script" path="res://player/states/attack/right.gd" id="11_puf2u"]
 [ext_resource type="Script" path="res://player/states/attack/left/heavy.gd" id="11_sc312"]
+[ext_resource type="Texture2D" uid="uid://ck2whn7lyy4qq" path="res://player/frames/back_light/BackLight0004.png" id="11_wxhh1"]
 [ext_resource type="Script" path="res://player/states/attack/up.gd" id="12_1tld7"]
 [ext_resource type="Script" path="res://player/states/attack/left/light.gd" id="12_sq3q1"]
+[ext_resource type="Texture2D" uid="uid://dht63vub5qu16" path="res://player/frames/back_light/BackLight0005.png" id="12_x0xx0"]
+[ext_resource type="Texture2D" uid="uid://ch036mlkdc08x" path="res://player/frames/back_light/BackLight0006.png" id="13_t1vkg"]
 [ext_resource type="Script" path="res://player/states/attack/down.gd" id="13_up0le"]
 [ext_resource type="Script" path="res://player/states/attack/right/heavy.gd" id="14_5pu3y"]
+[ext_resource type="Texture2D" uid="uid://bwhieleuxj8wa" path="res://player/frames/neutral_heavy/NeutralHeavy0001.png" id="14_38go3"]
+[ext_resource type="Texture2D" uid="uid://dto2hj7epli" path="res://player/frames/neutral_heavy/NeutralHeavy0002.png" id="15_jkjal"]
 [ext_resource type="Script" path="res://player/states/attack/right/light.gd" id="15_nm503"]
+[ext_resource type="Texture2D" uid="uid://c8gnkv0ag0wjf" path="res://player/frames/neutral_heavy/NeutralHeavy0003.png" id="16_wbpv3"]
 [ext_resource type="Script" path="res://player/states/attack/up/heavy.gd" id="17_5wsvr"]
+[ext_resource type="Texture2D" uid="uid://buy7pg6sqmcq8" path="res://player/frames/neutral_heavy/NeutralHeavy0004.png" id="17_u28b3"]
 [ext_resource type="Script" path="res://player/states/attack/neutral.gd" id="18_gaxoc"]
+[ext_resource type="Texture2D" uid="uid://cax421hujmcye" path="res://player/frames/neutral_light/NeutralLight0001.png" id="18_tycdq"]
 [ext_resource type="Script" path="res://player/states/attack/up/light.gd" id="18_vbtkc"]
+[ext_resource type="Texture2D" uid="uid://dgfgqfo2kr85p" path="res://player/frames/neutral_light/NeutralLight0002.png" id="19_sa7lv"]
 [ext_resource type="Script" path="res://player/states/attack/neutral/heavy.gd" id="19_vegu5"]
 [ext_resource type="Script" path="res://player/states/attack/neutral/light.gd" id="20_3xaxq"]
+[ext_resource type="Texture2D" uid="uid://b5rjgl4j1qfar" path="res://player/frames/neutral_light/NeutralLight0003.png" id="20_43d81"]
 [ext_resource type="Script" path="res://player/states/attack/down/heavy.gd" id="20_dfwqf"]
 [ext_resource type="Script" path="res://player/states/attack/down/light.gd" id="21_jnhhx"]
+[ext_resource type="Texture2D" uid="uid://dls4w4ok30our" path="res://player/frames/neutral_light/NeutralLight0004.png" id="21_p220d"]
 [ext_resource type="Texture2D" uid="uid://dqkpeywklc1w" path="res://player/BlacksmithIdle.png" id="24_r3bfi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0pa78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o70lk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4p2id")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2hu4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kv5pw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sis1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ll0sm")
+}],
+"loop": true,
+"name": &"back_heavy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ieh42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6i5pt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l4vv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wxhh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_x0xx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_t1vkg")
+}],
+"loop": true,
+"name": &"back_light",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_38go3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jkjal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_wbpv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_u28b3")
+}],
+"loop": true,
+"name": &"neutral_heavy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_tycdq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_sa7lv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_43d81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_p220d")
+}],
+"loop": true,
+"name": &"neutral_light",
+"speed": 12.0
+}]
 
 [sub_resource type="Animation" id="Animation_n51ys"]
 resource_name = "Down"
@@ -184,11 +286,10 @@ _data = {
 [node name="Player" type="Node2D"]
 script = ExtResource("1_vosrb")
 
-[node name="Player" type="Sprite2D" parent="."]
-texture = ExtResource("2_pgqb2")
+[node name="Player" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0pa78")
+animation = &"back_heavy"
 offset = Vector2(0, -180)
-hframes = 5
-vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

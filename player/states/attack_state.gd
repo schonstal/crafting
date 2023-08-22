@@ -1,8 +1,6 @@
 class_name AttackState
 extends State
 
-@export var animation = "Neutral.Light"
-
 @onready var animation_player:AnimationPlayer = %AnimationPlayer
 
 func _unhandled_input(event:InputEvent) -> void:
@@ -15,6 +13,7 @@ func _process(delta:float) -> void:
   _parent._process(delta)
 
 func enter(msg:Dictionary = {}) -> void:
+  var animation = "%s.%s" % [get_parent().name, name]
   animation_player.play(animation)
   _parent.enter(msg)
 
