@@ -1,8 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=29 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
 [ext_resource type="PackedScene" uid="uid://cjry6xo4ksbhv" path="res://forge/forge.tscn" id="2_b8ldk"]
-[ext_resource type="Texture2D" uid="uid://dqkpeywklc1w" path="res://player/BlacksmithIdle.png" id="3_1ksr6"]
+[ext_resource type="Texture2D" uid="uid://djknp8gslkfww" path="res://player/frames/player_atlas.png" id="3_3ud6d"]
 [ext_resource type="PackedScene" uid="uid://ckpi8c0ctwu7s" path="res://player/player.tscn" id="3_b5cdq"]
 [ext_resource type="Texture2D" uid="uid://28t167ppbjcv" path="res://forge/Kiln.png" id="4_580f8"]
 [ext_resource type="Texture2D" uid="uid://bfpe3mgwcnr65" path="res://forge/KilnLight.png" id="5_imyta"]
@@ -17,6 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://cx36dct8c121w" path="res://UI/HeatGaugeFrame.png" id="14_pfmkh"]
 [ext_resource type="Shader" path="res://scenes/gameplay/paper_texture.gdshader" id="16_b2nmg"]
 [ext_resource type="Texture2D" uid="uid://b12xa4qmqc6d3" path="res://scenes/gameplay/Vintage_Paper_Texture_(9789792113).jpg" id="17_mr81x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n6bn"]
+atlas = ExtResource("3_3ud6d")
+region = Rect2(4, 1172, 301, 369)
+margin = Rect2(3, 1, 4, 2)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_brd48"]
 blend_mode = 1
@@ -147,10 +152,7 @@ metadata/_edit_lock_ = true
 [node name="BlacksmithIdle" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(831, 410)
-texture = ExtResource("3_1ksr6")
-
-[node name="Player" parent="." instance=ExtResource("3_b5cdq")]
-position = Vector2(859, 609)
+texture = SubResource("AtlasTexture_3n6bn")
 
 [node name="Forgerino" type="Node2D" parent="."]
 
@@ -229,10 +231,14 @@ offset = Vector2(0, -15)
 position = Vector2(76, 453)
 texture = ExtResource("14_pfmkh")
 
+[node name="Player" parent="." instance=ExtResource("3_b5cdq")]
+position = Vector2(820, 541)
+
 [node name="PaperOverlay" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_jwhga")
 position = Vector2(661, -352)
 texture = ExtResource("17_mr81x")
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_juftt")

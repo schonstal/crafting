@@ -14,9 +14,13 @@ func _process(delta:float) -> void:
 
 func enter(msg:Dictionary = {}) -> void:
   var animation = "%s.%s" % [get_parent().name, name]
+  animation_player.stop()
   animation_player.play(animation)
+  animation_player.animation_finished.connect(attack_complete)
   _parent.enter(msg)
 
 func exit() -> void:
   _parent.exit()
 
+func attack_complete(_name:String) -> void:
+  _state_machine.transition_to("Idle")
