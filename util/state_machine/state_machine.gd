@@ -12,6 +12,7 @@ extends Node
     _state_name = state.name
     
 @onready var _state_name := state.name
+var state_path := _state_name
 
 func _init() -> void:
   add_to_group("state_machine")

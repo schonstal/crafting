@@ -1,15 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bg6y8dfi0f0dg"]
+[gd_scene load_steps=7 format=3 uid="uid://bg6y8dfi0f0dg"]
 
 [ext_resource type="Script" path="res://ingot/ingot.gd" id="1_2ll3i"]
 [ext_resource type="Texture2D" uid="uid://c6ayxevna4ww3" path="res://ingot/meter/fill.png" id="2_asdev"]
 [ext_resource type="Texture2D" uid="uid://uw22tlbwr1ye" path="res://ingot/meter/thermometer.png" id="3_mwjbb"]
 [ext_resource type="Texture2D" uid="uid://d0vqtrt05iyje" path="res://ingot/Ingot.png" id="4_h76sn"]
 [ext_resource type="PackedScene" uid="uid://low51rim76wg" path="res://vfx/impact/impact.tscn" id="5_v7ljc"]
+[ext_resource type="Script" path="res://ingot/combo_progress.gd" id="6_6qek1"]
 
-[node name="Piece" type="Node2D"]
+[node name="Ingot" type="Node2D"]
 script = ExtResource("1_2ll3i")
 
-[node name="Ingot" type="Sprite2D" parent="."]
+[node name="Graphic" type="Sprite2D" parent="."]
 texture = ExtResource("4_h76sn")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
@@ -29,3 +30,8 @@ tint_over = Color(0, 0, 0, 1)
 tint_progress = Color(0.417969, 0.1875, 0.140625, 1)
 
 [node name="Impact" parent="." instance=ExtResource("5_v7ljc")]
+
+[node name="ComboProgress" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("6_6qek1")

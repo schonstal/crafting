@@ -25,3 +25,6 @@ func exit() -> void:
 
 func attack_complete(_name:String) -> void:
   _state_machine.transition_to("Idle")
+
+func attack():
+  owner.attacked.emit("%s/%s" % [get_parent().name, name])
