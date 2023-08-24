@@ -13,5 +13,4 @@ func _on_visibility_changed() -> void:
        .set_ease(Tween.EASE_OUT)
 
 func set_outer_threshold(value:float) -> void:
-  print(value)
   material.set_shader_parameter("outer_threshold", value)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://bg6y8dfi0f0dg"]
+[gd_scene load_steps=13 format=3 uid="uid://bg6y8dfi0f0dg"]
 
 [ext_resource type="Script" path="res://ingot/ingot.gd" id="1_2ll3i"]
+[ext_resource type="Texture2D" uid="uid://cck8fc7wiv80v" path="res://ingot/heat_gradient.tres" id="2_l38ip"]
 [ext_resource type="Texture2D" uid="uid://bowhc77jj6m0n" path="res://ingot/meter/ThermometerInterior.png" id="3_jcrwj"]
 [ext_resource type="Texture2D" uid="uid://vkcrufbxjj0c" path="res://ingot/meter/ThermometerExterior.png" id="4_517w3"]
 [ext_resource type="Texture2D" uid="uid://d0vqtrt05iyje" path="res://ingot/Ingot.png" id="4_h76sn"]
@@ -9,14 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://low51rim76wg" path="res://vfx/impact/impact.tscn" id="5_v7ljc"]
 [ext_resource type="Script" path="res://ingot/combo_progress.gd" id="6_6qek1"]
 [ext_resource type="Script" path="res://ingot/meter/fire.gd" id="8_e1jml"]
-
-[sub_resource type="Gradient" id="Gradient_v3a0y"]
-offsets = PackedFloat32Array(0, 0.175299, 0.450644, 0.763949, 0.93133)
-colors = PackedColorArray(0.0285239, 0.13406, 0.255021, 1, 0.519531, 0.144531, 0.03125, 1, 0.808594, 0.410156, 0.230469, 1, 0.992188, 0.890625, 0.503906, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_fac67"]
-gradient = SubResource("Gradient_v3a0y")
-width = 100
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krpnc"]
 shader = ExtResource("5_7jdpg")
@@ -34,6 +27,7 @@ size = Vector2(16, 30)
 
 [node name="Ingot" type="Node2D"]
 script = ExtResource("1_2ll3i")
+gradient_texture = ExtResource("2_l38ip")
 
 [node name="Graphic" type="Sprite2D" parent="."]
 texture = ExtResource("4_h76sn")
@@ -47,7 +41,7 @@ script = ExtResource("6_6qek1")
 
 [node name="Meter" type="Node2D" parent="."]
 script = ExtResource("5_drvwm")
-gradient_texture = SubResource("GradientTexture1D_fac67")
+gradient_texture = ExtResource("2_l38ip")
 
 [node name="Shadow" type="Sprite2D" parent="Meter"]
 modulate = Color(0, 0, 0, 0.513726)
