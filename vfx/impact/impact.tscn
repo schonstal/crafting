@@ -93,8 +93,8 @@ _data = {
 }
 
 [sub_resource type="Gradient" id="Gradient_uw82h"]
-offsets = PackedFloat32Array(0, 0.270936, 0.669951, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.519531, 0.144531, 0.03125, 1)
+offsets = PackedFloat32Array(0, 0.270936, 0.669951, 0.881773, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.519531, 0.144531, 0.03125, 1, 0.103482, 0.0663441, 0.04408, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_t22kl"]
 gradient = SubResource("Gradient_uw82h")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=31 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
 [ext_resource type="Texture2D" uid="uid://djknp8gslkfww" path="res://player/frames/player_atlas.png" id="3_3ud6d"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bfpe3mgwcnr65" path="res://forge/KilnLight.png" id="5_imyta"]
 [ext_resource type="Texture2D" uid="uid://ckaayw0qqcldu" path="res://forge/CrucibleBack.png" id="6_a2fj5"]
 [ext_resource type="Texture2D" uid="uid://dwcydg2c56kjd" path="res://forge/Coals.png" id="7_xcy12"]
+[ext_resource type="PackedScene" uid="uid://q4wgqt3g46ha" path="res://forge/ingot_queue/ingot_queue.tscn" id="7_yd7y0"]
 [ext_resource type="Texture2D" uid="uid://djlheh2p02pyi" path="res://forge/CrucibleFront.png" id="8_8rmex"]
 [ext_resource type="Texture2D" uid="uid://dee8c7irr1fup" path="res://forge/Bellows.png" id="9_y6svw"]
 [ext_resource type="Texture2D" uid="uid://c28jy82pc8ry" path="res://scenes/gameplay/Anvil.png" id="10_558kh"]
@@ -115,21 +116,41 @@ _data = {
 "RESET": SubResource("Animation_dm6n4")
 }
 
-[sub_resource type="Gradient" id="Gradient_gxdta"]
-offsets = PackedFloat32Array(0.0197044, 0.157635, 0.837438, 1)
-colors = PackedColorArray(0.837764, 0.870076, 0.474632, 1, 0.757814, 0.39705, 0.140025, 1, 0.399745, 0.279591, 0.141892, 1, 0.166853, 0.166853, 0.166853, 0.67451)
+[sub_resource type="Gradient" id="Gradient_uw82h"]
+offsets = PackedFloat32Array(0, 0.270936, 0.669951, 0.881773, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.519531, 0.144531, 0.03125, 1, 0.103482, 0.0663441, 0.04408, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6y0en"]
-gradient = SubResource("Gradient_gxdta")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t22kl"]
+gradient = SubResource("Gradient_uw82h")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_caph0"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jtlq6"]
+lifetime_randomness = 0.52
 emission_shape = 3
-emission_box_extents = Vector3(150, 20, 1)
+emission_box_extents = Vector3(1, 100, 1)
 particle_flag_disable_z = true
-gravity = Vector3(0, -250, 0)
+direction = Vector3(1, 0.25, 0)
+gravity = Vector3(0, -40, 0)
+initial_velocity_max = 366.19
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-color_ramp = SubResource("GradientTexture1D_6y0en")
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_t22kl")
+turbulence_enabled = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fykda"]
+lifetime_randomness = 0.52
+emission_shape = 3
+emission_box_extents = Vector3(200, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+flatness = 1.0
+gravity = Vector3(0, -100, 0)
+initial_velocity_max = 366.19
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_t22kl")
+hue_variation_max = 0.17
 turbulence_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jwhga"]
@@ -188,11 +209,25 @@ libraries = {
 "": SubResource("AnimationLibrary_bni2n")
 }
 
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Forgerino"]
+visible = false
+position = Vector2(266, 389)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_jtlq6")
+lifetime = 2.0
+trail_enabled = true
+trail_lifetime = 0.05
+
+[node name="IngotQueue" parent="Forgerino" instance=ExtResource("7_yd7y0")]
+position = Vector2(289, 451)
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Forgerino"]
 position = Vector2(425, 457)
-amount = 20
-process_material = SubResource("ParticleProcessMaterial_caph0")
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_fykda")
 lifetime = 2.0
+trail_enabled = true
+trail_lifetime = 0.05
 
 [node name="CrucibleFront" type="Sprite2D" parent="Forgerino"]
 position = Vector2(424, 414)
@@ -229,7 +264,7 @@ offset = Vector2(0, -15)
 position = Vector2(76, 453)
 texture = ExtResource("14_pfmkh")
 
-[node name="Piece" parent="." instance=ExtResource("17_5pc4i")]
+[node name="Ingot" parent="." instance=ExtResource("17_5pc4i")]
 position = Vector2(1008, 464)
 
 [node name="Player" parent="." instance=ExtResource("3_b5cdq")]
@@ -250,5 +285,7 @@ environment = SubResource("Environment_juftt")
 [node name="ActiveCombo" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 976.0
+offset_top = 12.0
+offset_right = 1282.0
+offset_bottom = 327.0

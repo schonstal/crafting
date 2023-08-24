@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=48 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Texture2D" uid="uid://dco21663y7w71" path="res://player/frames/back_heavy/BackHeavy0001.png" id="2_o70lk"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dalol5s3p65lb" path="res://player/frames/back_heavy/BackHeavy0006.png" id="7_ll0sm"]
 [ext_resource type="Texture2D" uid="uid://ccb3476pjh2cb" path="res://player/frames/back_light/BackLight0001.png" id="8_ieh42"]
 [ext_resource type="Texture2D" uid="uid://cg5hgu3hi0v6s" path="res://player/frames/back_light/BackLight0002.png" id="9_6i5pt"]
-[ext_resource type="Script" path="res://player/command_input_reader.gd" id="9_m3fhh"]
 [ext_resource type="Script" path="res://player/states/attack/left.gd" id="10_a1j1p"]
 [ext_resource type="Texture2D" uid="uid://ey363mbl1uat" path="res://player/frames/back_light/BackLight0003.png" id="10_l4vv3"]
 [ext_resource type="Script" path="res://player/states/attack/right.gd" id="11_puf2u"]
@@ -456,10 +455,8 @@ script = ExtResource("19_vegu5")
 [node name="Light" type="Node" parent="StateMachine/Attack/Neutral"]
 script = ExtResource("20_3xaxq")
 
-[node name="CommandInputReader" type="Node" parent="."]
-script = ExtResource("9_m3fhh")
-
 [node name="ComboManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("41_7i7le")
 
 [node name="Label" type="Label" parent="."]
