@@ -1,5 +1,7 @@
 extends Node2D
 
+# TODO: Rotate ingots. Probably just one direction only.
+
 var ingot_scene := preload("res://ingot/ingot.tscn")
 
 # Called when the node enters the scene tree for the first time.

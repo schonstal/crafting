@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uw22tlbwr1ye"
-path="res://.godot/imported/thermometer.png-92635a0cc3c8315a6777edd0090327ba.ctex"
+uid="uid://vkcrufbxjj0c"
+path="res://.godot/imported/ThermometerExterior.png-4633c96769787bdc4396715b55d0cc47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ingot/meter/thermometer.png"
-dest_files=["res://.godot/imported/thermometer.png-92635a0cc3c8315a6777edd0090327ba.ctex"]
+source_file="res://ingot/meter/ThermometerExterior.png"
+dest_files=["res://.godot/imported/ThermometerExterior.png-4633c96769787bdc4396715b55d0cc47.ctex"]
 
 [params]
 
