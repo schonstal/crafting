@@ -14,8 +14,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krpnc"]
 shader = ExtResource("5_7jdpg")
 shader_parameter/transparent = Color(0, 0, 0, 0)
-shader_parameter/inner = Color(1, 1, 1, 1)
-shader_parameter/outer = Color(1, 1, 1, 1)
+shader_parameter/inner = Color(1, 0.996078, 0.901961, 1)
+shader_parameter/outer = Color(1, 0.992157, 0.858824, 1)
 shader_parameter/inner_threshold = 0.4
 shader_parameter/outer_threshold = 0.05
 shader_parameter/soft_edge = 0.04

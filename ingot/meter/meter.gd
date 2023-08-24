@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
   texture_progress_bar.tint_over = gradient_texture.gradient.sample(ingot.temp/100.0)
   texture_progress_bar.tint_progress = texture_progress_bar.tint_over
   
-  if ingot.temp >= 85:
+  if ingot.temp >= 90:
     fire.visible = true
   else:
     fire.visible = false
