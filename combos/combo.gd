@@ -15,3 +15,5 @@ var strikes = [
 ]
 
 @export var steps:Array = ["Neutral/Light", "Neutral/Heavy"]
+
+var active := false
