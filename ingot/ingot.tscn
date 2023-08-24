@@ -1,12 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://bg6y8dfi0f0dg"]
+[gd_scene load_steps=14 format=3 uid="uid://bg6y8dfi0f0dg"]
 
 [ext_resource type="Script" path="res://ingot/ingot.gd" id="1_2ll3i"]
 [ext_resource type="Texture2D" uid="uid://bowhc77jj6m0n" path="res://ingot/meter/ThermometerInterior.png" id="3_jcrwj"]
 [ext_resource type="Texture2D" uid="uid://vkcrufbxjj0c" path="res://ingot/meter/ThermometerExterior.png" id="4_517w3"]
 [ext_resource type="Texture2D" uid="uid://d0vqtrt05iyje" path="res://ingot/Ingot.png" id="4_h76sn"]
 [ext_resource type="Shader" path="res://ingot/meter/fire.gdshader" id="5_7jdpg"]
+[ext_resource type="Script" path="res://ingot/meter/meter.gd" id="5_drvwm"]
 [ext_resource type="PackedScene" uid="uid://low51rim76wg" path="res://vfx/impact/impact.tscn" id="5_v7ljc"]
 [ext_resource type="Script" path="res://ingot/combo_progress.gd" id="6_6qek1"]
+[ext_resource type="Script" path="res://ingot/meter/fire.gd" id="8_e1jml"]
+
+[sub_resource type="Gradient" id="Gradient_v3a0y"]
+offsets = PackedFloat32Array(0, 0.175299, 0.450644, 0.763949, 0.93133)
+colors = PackedColorArray(0.0285239, 0.13406, 0.255021, 1, 0.519531, 0.144531, 0.03125, 1, 0.808594, 0.410156, 0.230469, 1, 0.992188, 0.890625, 0.503906, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fac67"]
+gradient = SubResource("Gradient_v3a0y")
+width = 100
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_krpnc"]
 shader = ExtResource("5_7jdpg")
@@ -35,22 +45,29 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("6_6qek1")
 
-[node name="Temperature" type="Node2D" parent="."]
+[node name="Meter" type="Node2D" parent="."]
+script = ExtResource("5_drvwm")
+gradient_texture = SubResource("GradientTexture1D_fac67")
 
-[node name="Fire" type="Sprite2D" parent="Temperature"]
+[node name="Shadow" type="Sprite2D" parent="Meter"]
+modulate = Color(0, 0, 0, 0.513726)
+position = Vector2(33, -53)
+texture = ExtResource("4_517w3")
+
+[node name="Fire" type="Sprite2D" parent="Meter"]
 material = SubResource("ShaderMaterial_krpnc")
 position = Vector2(65.0313, -5)
 scale = Vector2(4.99609, 6.25833)
 texture = SubResource("PlaceholderTexture2D_p056u")
+script = ExtResource("8_e1jml")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Temperature"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Meter"]
 offset_left = 20.0
 offset_top = -86.0
 offset_right = 50.0
 offset_bottom = -16.0
 value = 100.0
 fill_mode = 3
-nine_patch_stretch = true
 stretch_margin_top = 20
 stretch_margin_bottom = 30
 texture_under = ExtResource("3_jcrwj")
