@@ -8,7 +8,7 @@ var temp := 0.0
 @onready var graphic: Sprite2D = $Graphic
   
 func _process(delta: float) -> void:
-  temp += delta * 50
+  temp += delta * 10
   if Input.is_action_just_pressed("next"):
     temp = 0
     
