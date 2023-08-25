@@ -1,3 +1,4 @@
+class_name Player
 extends Node2D
 
 signal attacked(attack_name:String)
@@ -6,6 +7,7 @@ signal attacked(attack_name:String)
 @onready var label:Label = $Label
 
 func _ready() -> void:
+  Game.player = self
   combo_manager.succeeded.connect(_on_combo_succeeded)
   combo_manager.failed.connect(_on_combo_failed)
   combo_manager.progressed.connect(_on_combo_progressed)

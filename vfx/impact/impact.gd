@@ -5,17 +5,13 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-  pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-  if Input.is_action_just_pressed("strike"):
-    explode()
-  if Input.is_action_just_pressed("heavy_strike"):
+  # I'm sorry, but it's a game jam
+  await get_tree().process_frame
+  Game.player.attacked.connect(_on_attack)
+    
+func _on_attack(attack_name: String) -> void:
+  if attack_name != "Neutral/Light":
     animation_player.stop()
     animation_player.play("explode")
-
-func explode() -> void:
   particles.emitting = true
   particles.restart()

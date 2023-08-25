@@ -14,8 +14,8 @@ func _process(delta: float) -> void:
 func change_combo(new_combo: Combo):
   combo = new_combo
   
-  nine_patch_rect.size.y = 42
-  nine_patch_rect.position.y = -42
+  nine_patch_rect.size.y = 52
+  nine_patch_rect.position.y = -52
   
   var new_size = Vector2(
     nine_patch_rect.size.x,

@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventBus="*res://autoload/event_bus.gd"
+Game="*res://game.gd"
 
 [display]
 
