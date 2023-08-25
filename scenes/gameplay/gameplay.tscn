@@ -310,22 +310,18 @@ offset_bottom = 40.0
 script = ExtResource("18_p44mn")
 
 [node name="FinishedComboScroll" type="Sprite2D" parent="UI/ActiveCombo"]
-visible = false
 position = Vector2(1248, 55)
 texture = ExtResource("19_tf88n")
 
 [node name="CurrentComboScroll" type="Sprite2D" parent="UI/ActiveCombo"]
-visible = false
 position = Vector2(1247, 92)
 texture = ExtResource("20_5g2rr")
 
 [node name="FutureComboScroll" type="Sprite2D" parent="UI/ActiveCombo"]
-visible = false
 position = Vector2(1244, 127)
 texture = ExtResource("21_1sy8f")
 
 [node name="FutureComboScroll2" type="Sprite2D" parent="UI/ActiveCombo"]
-visible = false
 position = Vector2(1245, 158)
 texture = ExtResource("21_1sy8f")
 
@@ -333,8 +329,8 @@ texture = ExtResource("21_1sy8f")
 layout_mode = 0
 offset_left = 1095.0
 offset_top = -55.0
-offset_right = 1252.0
-offset_bottom = -3.0
+offset_right = 1249.0
+offset_bottom = -2.0
 texture = ExtResource("19_2dlnc")
 patch_margin_top = 10
 patch_margin_bottom = 42
