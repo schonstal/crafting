@@ -15,3 +15,6 @@ func _on_attack(attack_name: String) -> void:
     animation_player.play("explode")
   particles.emitting = true
   particles.restart()
+  Engine.time_scale = 0.1
+  await get_tree().create_timer(0.3 * Engine.time_scale).timeout
+  Engine.time_scale = 1
