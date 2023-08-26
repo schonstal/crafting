@@ -3,6 +3,13 @@ extends State
 
 @onready var animation_player:AnimationPlayer = %AnimationPlayer
 
+var attack_name : String :
+  get:
+    return "%s/%s" % [get_parent().name, name]
+    
+@export var big_sparks := true
+@export var delay_frames := 8
+
 func _unhandled_input(event:InputEvent) -> void:
   _parent._unhandled_input(event)
 
@@ -27,4 +34,4 @@ func attack_complete(_name:String) -> void:
   _state_machine.transition_to("Idle")
 
 func attack():
-  owner.attacked.emit("%s/%s" % [get_parent().name, name])
+  owner.attacked.emit(self)

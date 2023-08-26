@@ -1,7 +1,7 @@
 class_name Player
 extends Node2D
 
-signal attacked(attack_name:String)
+signal attacked(attack:AttackState)
 
 @onready var combo_manager:ComboManager = $ComboManager
 @onready var label:Label = $Label

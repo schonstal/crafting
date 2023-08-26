@@ -9,13 +9,13 @@ func _ready() -> void:
   await get_tree().process_frame
   Game.player.attacked.connect(_on_attack)
     
-func _on_attack(attack_name: String) -> void:
-  if attack_name != "Neutral/Light":
+func _on_attack(attack: AttackState) -> void:
+  if attack.big_sparks:
     animation_player.stop()
     animation_player.play("explode")
   particles.emitting = true
   particles.restart()
   Engine.time_scale = 0.01
-  for i in range(0,8):
+  for i in range(0,attack.delay_frames):
     await get_tree().process_frame
   Engine.time_scale = 1

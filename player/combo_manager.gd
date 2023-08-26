@@ -24,10 +24,10 @@ func start() -> void:
   var current_combo := active_combo
 
   for step in current_combo.steps:
-    var attack_name = await owner.attacked
+    var attack = await owner.attacked
     if !current_combo.active:
       return
-    if attack_name != step:
+    if attack.attack_name != step:
       failed.emit()
       return
     progressed.emit()

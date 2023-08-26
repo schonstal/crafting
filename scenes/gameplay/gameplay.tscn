@@ -251,7 +251,7 @@ texture = ExtResource("9_y6svw")
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Anvil" type="Sprite2D" parent="Environment"]
-position = Vector2(1046, 570)
+position = Vector2(1054, 550)
 texture = ExtResource("10_558kh")
 
 [node name="Vent" type="Sprite2D" parent="Environment"]
@@ -278,7 +278,7 @@ texture = ExtResource("14_d81kg")
 [node name="ActiveIngot" type="Node2D" parent="."]
 
 [node name="Ingot" parent="ActiveIngot" instance=ExtResource("17_5pc4i")]
-position = Vector2(1008, 464)
+position = Vector2(1005, 454)
 
 [node name="Player" parent="." instance=ExtResource("3_b5cdq")]
 position = Vector2(820, 541)
