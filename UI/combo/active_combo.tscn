@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://7nah8u56kjhb"]
+
+[ext_resource type="Script" path="res://UI/combo/active_combo.gd" id="1_ilaoc"]
+[ext_resource type="Texture2D" uid="uid://bo1xooonwof8g" path="res://UI/combo/FinishedComboScroll.png" id="2_jc5jl"]
+[ext_resource type="Texture2D" uid="uid://0mdpeuk2svg6" path="res://UI/combo/CurrentComboScroll.png" id="3_a8h84"]
+[ext_resource type="Texture2D" uid="uid://bxjlvokhc8nhb" path="res://UI/combo/FutureComboScroll.png" id="4_n5rx0"]
+[ext_resource type="Texture2D" uid="uid://bn223pdda06gr" path="res://UI/combo/Parchment.png" id="5_5oaxd"]
+[ext_resource type="Texture2D" uid="uid://tj6s4t2a33q1" path="res://UI/combo/ComboArrowUp.png" id="6_c780j"]
+[ext_resource type="Texture2D" uid="uid://g4112c40txpp" path="res://UI/combo/ComboHeavyButton.png" id="7_ol0x1"]
+[ext_resource type="Texture2D" uid="uid://ja5gacpv6rxm" path="res://UI/combo/HammerStamp.png" id="8_kdt3x"]
+
+[node name="ActiveCombo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -10.0
+offset_right = 40.0
+offset_bottom = 30.0
+script = ExtResource("1_ilaoc")
+
+[node name="FinishedComboScroll" type="Sprite2D" parent="."]
+position = Vector2(1248, 55)
+texture = ExtResource("2_jc5jl")
+
+[node name="CurrentComboScroll" type="Sprite2D" parent="."]
+position = Vector2(1247, 92)
+texture = ExtResource("3_a8h84")
+
+[node name="FutureComboScroll" type="Sprite2D" parent="."]
+position = Vector2(1244, 127)
+texture = ExtResource("4_n5rx0")
+
+[node name="FutureComboScroll2" type="Sprite2D" parent="."]
+position = Vector2(1245, 158)
+texture = ExtResource("4_n5rx0")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 1095.0
+offset_top = -55.0
+offset_right = 1249.0
+offset_bottom = -2.0
+texture = ExtResource("5_5oaxd")
+patch_margin_top = 10
+patch_margin_bottom = 42
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Instructions" type="Control" parent="."]
+clip_contents = true
+anchors_preset = 0
+offset_left = 1123.0
+offset_top = 40.0
+offset_right = 1232.0
+offset_bottom = 203.0
+
+[node name="ComboVBox" type="VBoxContainer" parent="Instructions"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 21.0
+offset_right = 110.0
+offset_bottom = 172.0
+theme_override_constants/separation = 7
+
+[node name="ComboHBox" type="HBoxContainer" parent="Instructions/ComboVBox"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Direction" type="TextureRect" parent="Instructions/ComboVBox/ComboHBox"]
+layout_mode = 2
+texture = ExtResource("6_c780j")
+stretch_mode = 3
+
+[node name="Strike" type="TextureRect" parent="Instructions/ComboVBox/ComboHBox"]
+layout_mode = 2
+texture = ExtResource("7_ol0x1")
+stretch_mode = 3
+
+[node name="Finished" type="Sprite2D" parent="Instructions/ComboVBox/ComboHBox"]
+position = Vector2(49, 20)
+texture = ExtResource("8_kdt3x")
