@@ -18,14 +18,19 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
   if Input.is_action_just_pressed("next"):
+    
     if active_ingot != null:
       remove_child(active_ingot)
       active_ingot.appear()
+      active_ingot.active = false
       queue.push_front(active_ingot)
+      
     active_ingot = queue.pop_back()
+    active_ingot.active = true
     active_ingot.position = active_position
     active_ingot.appear()
     add_child(active_ingot)
+    
     queue.recalculate_positions()
 
   if Input.is_action_just_pressed("previous"):

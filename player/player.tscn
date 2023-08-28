@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=99 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
@@ -85,6 +85,7 @@
 [ext_resource type="Texture2D" uid="uid://dmo1ivie06v0t" path="res://forge/PistonChain.png" id="83_fhi5i"]
 [ext_resource type="Texture2D" uid="uid://btc14qntdb0yr" path="res://forge/BottomtPiston.png" id="84_i1nc4"]
 [ext_resource type="Texture2D" uid="uid://c0a12808ky4sr" path="res://forge/TopPiston.png" id="85_v8jcg"]
+[ext_resource type="PackedScene" uid="uid://low51rim76wg" path="res://vfx/impact/impact.tscn" id="86_cmitp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0pa78"]
 animations = [{
@@ -840,6 +841,9 @@ _data = {
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_vosrb")
+
+[node name="Impact" parent="." instance=ExtResource("86_cmitp")]
+position = Vector2(185, -89)
 
 [node name="Skin" type="AnimatedSprite2D" parent="."]
 position = Vector2(-200, -26)

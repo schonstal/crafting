@@ -6,7 +6,6 @@ var combo:Combo
 
 @onready var nine_patch_rect: NinePatchRect = $NinePatchRect
 @onready var instructions: Control = $Instructions
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var tween:Tween
 

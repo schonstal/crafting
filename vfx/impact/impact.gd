@@ -7,7 +7,7 @@ extends Node2D
 func _ready() -> void:
   # I'm sorry, but it's a game jam
   await get_tree().process_frame
-  Game.player.attacked.connect(_on_attack)
+  owner.attacked.connect(_on_attack)
     
 func _on_attack(attack: AttackState) -> void:
   if attack.big_sparks:

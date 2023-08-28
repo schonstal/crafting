@@ -19,10 +19,11 @@ func _ready() -> void:
   self.type = randi_range(0, 7)
   
 func _process(delta: float) -> void:
-  temp += delta * 10
-  if Input.is_action_just_pressed("next"):
-    temp = 0
-    
+  if active:
+    temp -= delta * 20
+  else:
+    temp += delta * 10
+  temp = clamp(temp, 0, 100)
   graphic.modulate = Color(0.5, 0.5, 0.4, 0) + gradient_texture.gradient.sample(clamp(temp - 5, 0, 90)/100.0)
 
 func heat(amount:float) -> void:

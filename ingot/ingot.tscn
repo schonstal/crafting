@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bg6y8dfi0f0dg"]
+[gd_scene load_steps=22 format=3 uid="uid://bg6y8dfi0f0dg"]
 
 [ext_resource type="Script" path="res://ingot/ingot.gd" id="1_2ll3i"]
 [ext_resource type="Texture2D" uid="uid://cck8fc7wiv80v" path="res://ingot/heat_gradient.tres" id="2_l38ip"]
@@ -9,7 +9,6 @@
 [ext_resource type="Shader" path="res://ingot/meter/fire.gdshader" id="5_7jdpg"]
 [ext_resource type="Script" path="res://ingot/meter/meter.gd" id="5_drvwm"]
 [ext_resource type="Texture2D" uid="uid://cu25g66jqag76" path="res://ingot/sprite/IngotCube.png" id="5_ufo53"]
-[ext_resource type="PackedScene" uid="uid://low51rim76wg" path="res://vfx/impact/impact.tscn" id="5_v7ljc"]
 [ext_resource type="Script" path="res://ingot/combo_progress.gd" id="6_6qek1"]
 [ext_resource type="Texture2D" uid="uid://3d1j6lrbry7l" path="res://ingot/sprite/IngotCylinder.png" id="6_huk1u"]
 [ext_resource type="Texture2D" uid="uid://dyy2rxgiqb7t" path="res://ingot/sprite/IngotHex.png" id="7_i2rlv"]
@@ -79,11 +78,35 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Graphic:position")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, -20), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Meter:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Meter:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -20), Vector2(0, 0)]
 }
@@ -114,6 +137,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Meter:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Meter:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eg4p6"]
 _data = {
@@ -127,8 +174,6 @@ gradient_texture = ExtResource("2_l38ip")
 
 [node name="Graphic" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ix27e")
-
-[node name="Impact" parent="." instance=ExtResource("5_v7ljc")]
 
 [node name="ComboProgress" type="Control" parent="."]
 layout_mode = 3
