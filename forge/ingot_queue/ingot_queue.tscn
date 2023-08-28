@@ -8,5 +8,3 @@ script = ExtResource("1_i3rld")
 
 [node name="Queue" type="Node2D" parent="."]
 script = ExtResource("1_xwxae")
-
-[node name="Active" type="Node2D" parent="."]

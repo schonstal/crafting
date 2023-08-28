@@ -2,7 +2,9 @@ class_name Ingot
 extends Node2D
 
 @export var gradient_texture:GradientTexture1D
+
 @onready var graphic: AnimatedSprite2D = $Graphic
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var active = false
 
@@ -25,3 +27,6 @@ func _process(delta: float) -> void:
 
 func heat(amount:float) -> void:
   temp += amount
+
+func appear() -> void:
+  animation_player.play("appear")
