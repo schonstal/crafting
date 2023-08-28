@@ -1,22 +1,12 @@
+class_name IngotQueue
 extends Node2D
 
-# TODO: Rotate ingots. Probably just one direction only.
-
-var ingot_scene := preload("res://ingot/ingot.tscn")
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-  for i in range(0, 4):
-    var ingot:Ingot = ingot_scene.instantiate()
-    push_front(ingot)
+func rotate_right():
+  move_child(get_child(-1), 0)
   recalculate_positions()
   
-func _process(delta: float) -> void:
-  if Input.is_action_just_pressed("next"):
-    move_child(get_child(-1), 0)
-  if Input.is_action_just_pressed("previous"):
-    move_child(get_child(0), -1)
-    
+func rotate_left():
+  move_child(get_child(0), -1)
   recalculate_positions()
 
 func push_front(ingot:Ingot):

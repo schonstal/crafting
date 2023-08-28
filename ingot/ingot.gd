@@ -2,10 +2,19 @@ class_name Ingot
 extends Node2D
 
 @export var gradient_texture:GradientTexture1D
+@onready var graphic: AnimatedSprite2D = $Graphic
 
+var active = false
+
+var type := 0 :
+  set(value):
+    type = value
+    graphic.frame = type
+    
 var temp := 0.0
 
-@onready var graphic: Sprite2D = $Graphic
+func _ready() -> void:
+  self.type = randi_range(0, 7)
   
 func _process(delta: float) -> void:
   temp += delta * 10

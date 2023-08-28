@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=34 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
 [ext_resource type="Texture2D" uid="uid://djknp8gslkfww" path="res://player/frames/player_atlas.png" id="3_3ud6d"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://dho76uylx1e0m" path="res://UI/heat_gauge/HeatGaugeNeedle.png" id="13_sfbfk"]
 [ext_resource type="Texture2D" uid="uid://cx36dct8c121w" path="res://UI/heat_gauge/HeatGaugeFrame.png" id="14_d81kg"]
 [ext_resource type="Shader" path="res://scenes/gameplay/paper_texture.gdshader" id="16_b2nmg"]
-[ext_resource type="PackedScene" uid="uid://bg6y8dfi0f0dg" path="res://ingot/ingot.tscn" id="17_5pc4i"]
 [ext_resource type="PackedScene" uid="uid://becw6yl857go5" path="res://UI/score/score.tscn" id="17_l2it6"]
 [ext_resource type="Texture2D" uid="uid://b12xa4qmqc6d3" path="res://scenes/gameplay/Vintage_Paper_Texture_(9789792113).jpg" id="17_mr81x"]
 [ext_resource type="PackedScene" uid="uid://7nah8u56kjhb" path="res://UI/combo/active_combo.tscn" id="18_ma35h"]
@@ -229,7 +228,7 @@ lifetime = 2.0
 trail_enabled = true
 trail_lifetime = 0.05
 
-[node name="IngotQueue" parent="Forgerino" instance=ExtResource("7_yd7y0")]
+[node name="IngotManager" parent="Forgerino" instance=ExtResource("7_yd7y0")]
 position = Vector2(289, 451)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Forgerino"]
@@ -274,11 +273,6 @@ offset = Vector2(0, -15)
 [node name="Frame" type="Sprite2D" parent="Environment/HeatGauge"]
 position = Vector2(76, 453)
 texture = ExtResource("14_d81kg")
-
-[node name="ActiveIngot" type="Node2D" parent="."]
-
-[node name="Ingot" parent="ActiveIngot" instance=ExtResource("17_5pc4i")]
-position = Vector2(1005, 454)
 
 [node name="Player" parent="." instance=ExtResource("3_b5cdq")]
 position = Vector2(820, 541)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://7nah8u56kjhb"]
+[gd_scene load_steps=10 format=3 uid="uid://7nah8u56kjhb"]
 
 [ext_resource type="Script" path="res://UI/combo/active_combo.gd" id="1_ilaoc"]
 [ext_resource type="Texture2D" uid="uid://bo1xooonwof8g" path="res://UI/combo/FinishedComboScroll.png" id="2_jc5jl"]
@@ -9,7 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://g4112c40txpp" path="res://UI/combo/ComboHeavyButton.png" id="7_ol0x1"]
 [ext_resource type="Texture2D" uid="uid://ja5gacpv6rxm" path="res://UI/combo/HammerStamp.png" id="8_kdt3x"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dsg1"]
+
 [node name="ActiveCombo" type="Control"]
+material = SubResource("ShaderMaterial_8dsg1")
 layout_mode = 3
 anchors_preset = 0
 offset_top = -10.0
@@ -34,6 +37,7 @@ position = Vector2(1245, 158)
 texture = ExtResource("4_n5rx0")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+material = SubResource("ShaderMaterial_8dsg1")
 layout_mode = 0
 offset_left = 1095.0
 offset_top = -55.0
