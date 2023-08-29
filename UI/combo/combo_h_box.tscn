@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfya2obb1guvd"]
+
+[ext_resource type="Texture2D" uid="uid://tj6s4t2a33q1" path="res://UI/combo/ComboArrowUp.png" id="1_htw0k"]
+[ext_resource type="Script" path="res://UI/combo/combo_h_box.gd" id="1_in2qf"]
+[ext_resource type="Texture2D" uid="uid://g4112c40txpp" path="res://UI/combo/ComboHeavyButton.png" id="2_ivm3y"]
+[ext_resource type="Texture2D" uid="uid://ja5gacpv6rxm" path="res://UI/combo/HammerStamp.png" id="3_wdv7p"]
+
+[node name="ComboHBox" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 38)
+theme_override_constants/separation = 5
+alignment = 1
+script = ExtResource("1_in2qf")
+
+[node name="Direction" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_htw0k")
+stretch_mode = 3
+
+[node name="Strike" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_ivm3y")
+stretch_mode = 3
+
+[node name="Finished" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(49, 20)
+texture = ExtResource("3_wdv7p")

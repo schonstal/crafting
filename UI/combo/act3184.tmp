@@ -16,7 +16,6 @@ offset_top = -10.0
 offset_right = 40.0
 offset_bottom = 30.0
 script = ExtResource("1_ilaoc")
-item_height = 38.0
 
 [node name="FinishedComboScroll" type="Sprite2D" parent="."]
 position = Vector2(1248, 55)

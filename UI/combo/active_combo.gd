@@ -2,10 +2,13 @@ extends Control
 
 var combo:Combo
 
-@export var item_height := 100.0
+@export var item_height := 25.0
 
 @onready var nine_patch_rect: NinePatchRect = $NinePatchRect
 @onready var instructions: Control = $Instructions
+@onready var combo_v_box: VBoxContainer = $Instructions/ComboVBox
+
+var step_scene = preload("res://UI/combo/combo_h_box.tscn")
 
 var tween:Tween
 
@@ -17,7 +20,10 @@ func _on_combo_changed(new_combo:Combo) -> void:
 
 func change_combo(new_combo: Combo):
   combo = new_combo
+  update_steps(combo)
+  update_rect(combo)
   
+func update_rect(combo: Combo) -> void:
   nine_patch_rect.size.y = 52
   nine_patch_rect.position.y = -52
   
@@ -25,7 +31,7 @@ func change_combo(new_combo: Combo):
   
   var new_size = Vector2(
     nine_patch_rect.size.x,
-    combo.steps.size() * item_height + 100
+    combo.steps.size() * item_height + 90
   )
   var new_position = Vector2(
     nine_patch_rect.position.x,
@@ -48,3 +54,13 @@ func change_combo(new_combo: Combo):
   
   tween.parallel()\
        .tween_property(instructions, "size", instructions_size, 0.3)
+
+func update_steps(combo: Combo) -> void:
+  for child in combo_v_box.get_children():
+    child.queue_free()
+
+  for step in combo.steps:
+    var node = step_scene.instantiate()
+    node.step_name = step
+    combo_v_box.add_child(node)
+  

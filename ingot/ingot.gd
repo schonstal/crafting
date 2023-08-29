@@ -6,15 +6,28 @@ extends Node2D
 @onready var graphic: AnimatedSprite2D = $Graphic
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var progress := 0
+
+# Game jam lol
+static var combos = [
+  ComboGroup.new(),
+  ComboGroup.new(),
+  ComboGroup.new(),
+  ComboGroup.new(),
+  ComboGroup.new(),
+  ComboGroup.new(),
+  ComboGroup.new(),
+  ComboGroup.new()
+]
+
 var active := false :
   set(value):
     active = value
     if active:
-      EventBus.combo_changed.emit(self.active_combo)
+      active_combo = combos[type].get_combo(progress)
+      EventBus.combo_changed.emit(active_combo)
       
-var active_combo: Combo :
-  get:
-    return Combo.new()
+var active_combo: Combo
 
 var type := 0 :
   set(value):
