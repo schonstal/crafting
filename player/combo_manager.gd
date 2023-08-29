@@ -2,7 +2,6 @@ class_name ComboManager
 extends Node
 
 var active_combo:Combo
-var progress := 0
 
 signal failed
 signal succeeded
@@ -12,8 +11,12 @@ signal switched_combo(combo:Combo)
 func _ready() -> void:
   active_combo = Combo.new()
   active_combo.active = true
+  EventBus.combo_changed.connect(_on_combo_changed)
   start()
-    
+
+func _on_combo_changed(new_combo:Combo) -> void:
+  switch_combo(new_combo)
+
 func switch_combo(combo:Combo):
   active_combo.active = false
   active_combo = combo

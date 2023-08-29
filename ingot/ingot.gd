@@ -6,7 +6,15 @@ extends Node2D
 @onready var graphic: AnimatedSprite2D = $Graphic
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var active = false
+var active := false :
+  set(value):
+    active = value
+    if active:
+      EventBus.combo_changed.emit(self.active_combo)
+      
+var active_combo: Combo :
+  get:
+    return Combo.new()
 
 var type := 0 :
   set(value):

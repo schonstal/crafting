@@ -9,9 +9,11 @@ var combo:Combo
 
 var tween:Tween
 
-func _process(delta: float) -> void:
-  if Input.is_action_just_pressed("previous"):
-    change_combo(Combo.new())
+func _ready() -> void:
+  EventBus.combo_changed.connect(_on_combo_changed)
+  
+func _on_combo_changed(new_combo:Combo) -> void:
+  change_combo(new_combo)
 
 func change_combo(new_combo: Combo):
   combo = new_combo

@@ -314,13 +314,12 @@ texture_under = ExtResource("18_nup4q")
 texture_over = ExtResource("19_y0cci")
 texture_progress = ExtResource("18_nup4q")
 tint_under = Color(1, 0.992157, 0.858824, 1)
-tint_over = Color(0, 0, 0, 1)
+tint_over = Color(1, 0.992157, 0.858824, 1)
 tint_progress = Color(1, 0.992157, 0.858824, 1)
 
 [node name="TextureProgressBar2" type="TextureProgressBar" parent="UI/Health/HBoxContainer"]
 layout_mode = 2
-value = 25.0
-fill_mode = 5
+value = 40.0
 texture_under = ExtResource("18_nup4q")
 texture_over = ExtResource("19_y0cci")
 texture_progress = ExtResource("18_nup4q")

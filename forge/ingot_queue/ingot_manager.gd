@@ -18,7 +18,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
   if Input.is_action_just_pressed("next"):
-    
     if active_ingot != null:
       remove_child(active_ingot)
       active_ingot.appear()
@@ -32,6 +31,3 @@ func _process(delta: float) -> void:
     add_child(active_ingot)
     
     queue.recalculate_positions()
-
-  if Input.is_action_just_pressed("previous"):
-    queue.rotate_left()

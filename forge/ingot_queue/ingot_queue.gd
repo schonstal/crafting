@@ -1,14 +1,6 @@
 class_name IngotQueue
 extends Node2D
 
-func rotate_right():
-  move_child(get_child(-1), 0)
-  recalculate_positions()
-  
-func rotate_left():
-  move_child(get_child(0), -1)
-  recalculate_positions()
-
 func push_front(ingot:Ingot):
   add_child(ingot)
   move_child(ingot, 0)
