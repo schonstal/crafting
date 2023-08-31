@@ -5,8 +5,7 @@ var states = [
   "Neutral",
   "Left",
   "Right",
-  "Up",
-  "Down"
+  "Up"
 ]
 
 var strikes = [
@@ -17,6 +16,8 @@ var strikes = [
 @export var steps:Array = ["Neutral/Light", "Neutral/Heavy"]
 
 var active := false
+
+signal progressed
 
 func _init() -> void:
   steps = []

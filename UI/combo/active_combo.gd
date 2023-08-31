@@ -9,6 +9,7 @@ var combo:Combo
 @onready var combo_v_box: VBoxContainer = $Instructions/ComboVBox
 
 var step_scene = preload("res://UI/combo/combo_h_box.tscn")
+var progress := 0
 
 var tween:Tween
 
@@ -17,9 +18,17 @@ func _ready() -> void:
   
 func _on_combo_changed(new_combo:Combo) -> void:
   change_combo(new_combo)
+  
+func _on_combo_progressed() -> void:
+  combo_v_box.get_child(progress).finish()
+  progress += 1
 
 func change_combo(new_combo: Combo):
+  progress = 0
+  if combo != null:
+    combo.progressed.disconnect(_on_combo_progressed)
   combo = new_combo
+  combo.progressed.connect(_on_combo_progressed)
   update_steps(combo)
   update_rect(combo)
   
@@ -31,7 +40,7 @@ func update_rect(combo: Combo) -> void:
   
   var new_size = Vector2(
     nine_patch_rect.size.x,
-    combo.steps.size() * item_height + 90
+    combo.steps.size() * item_height + 105
   )
   var new_position = Vector2(
     nine_patch_rect.position.x,

@@ -1,12 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://7nah8u56kjhb"]
+[gd_scene load_steps=15 format=3 uid="uid://7nah8u56kjhb"]
 
 [ext_resource type="Script" path="res://UI/combo/active_combo.gd" id="1_ilaoc"]
 [ext_resource type="Texture2D" uid="uid://bo1xooonwof8g" path="res://UI/combo/FinishedComboScroll.png" id="2_jc5jl"]
 [ext_resource type="Texture2D" uid="uid://0mdpeuk2svg6" path="res://UI/combo/CurrentComboScroll.png" id="3_a8h84"]
 [ext_resource type="Texture2D" uid="uid://bxjlvokhc8nhb" path="res://UI/combo/FutureComboScroll.png" id="4_n5rx0"]
 [ext_resource type="Texture2D" uid="uid://bn223pdda06gr" path="res://UI/combo/Parchment.png" id="5_5oaxd"]
+[ext_resource type="Texture2D" uid="uid://d0vqtrt05iyje" path="res://ingot/sprite/Ingot.png" id="6_kis0b"]
+[ext_resource type="Texture2D" uid="uid://di5rdxyoyn5np" path="res://ingot/sprite/IngotCone.png" id="7_qonhk"]
+[ext_resource type="Texture2D" uid="uid://cu25g66jqag76" path="res://ingot/sprite/IngotCube.png" id="8_6xhgi"]
+[ext_resource type="Texture2D" uid="uid://3d1j6lrbry7l" path="res://ingot/sprite/IngotCylinder.png" id="9_oxfnv"]
+[ext_resource type="Texture2D" uid="uid://dyy2rxgiqb7t" path="res://ingot/sprite/IngotHex.png" id="10_fk703"]
+[ext_resource type="Texture2D" uid="uid://eertfoybonsf" path="res://ingot/sprite/IngotPyramid.png" id="11_co06b"]
+[ext_resource type="Texture2D" uid="uid://ui47sgwqsf71" path="res://ingot/sprite/IngotSphere.png" id="12_5o3gt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dsg1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3vli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_kis0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qonhk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6xhgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oxfnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fk703")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_co06b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5o3gt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="ActiveCombo" type="Control"]
 material = SubResource("ShaderMaterial_8dsg1")
@@ -19,18 +55,22 @@ script = ExtResource("1_ilaoc")
 item_height = 38.0
 
 [node name="FinishedComboScroll" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1248, 55)
 texture = ExtResource("2_jc5jl")
 
 [node name="CurrentComboScroll" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1247, 92)
 texture = ExtResource("3_a8h84")
 
 [node name="FutureComboScroll" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1244, 127)
 texture = ExtResource("4_n5rx0")
 
 [node name="FutureComboScroll2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1245, 158)
 texture = ExtResource("4_n5rx0")
 
@@ -46,6 +86,10 @@ patch_margin_top = 10
 patch_margin_bottom = 42
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[node name="Ingot" type="AnimatedSprite2D" parent="NinePatchRect"]
+position = Vector2(85, 4)
+sprite_frames = SubResource("SpriteFrames_x3vli")
 
 [node name="Instructions" type="Control" parent="."]
 clip_contents = true

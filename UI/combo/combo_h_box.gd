@@ -2,6 +2,8 @@ extends HBoxContainer
 
 @onready var direction: TextureRect = $Direction
 @onready var strike: TextureRect = $Strike
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var finished: Sprite2D = $Finished
 
 var assets = {
   "Down": preload("res://UI/combo/ComboArrowDown.png"),
@@ -21,3 +23,12 @@ func _ready() -> void:
   else:
     direction.texture = assets[parts[0]]
   strike.texture = assets[parts[1]]
+
+func finish():
+  finished.position += Vector2(randi_range(-10, 10), randi_range(-5, 5))
+  var tween = create_tween()
+  finished.rotation = randf_range(-2*PI/16, 0)
+  tween.tween_property(finished, "rotation", finished.rotation + PI/16, 0.2)
+  tween.set_ease(Tween.EASE_OUT)
+  tween.set_trans(Tween.TRANS_CUBIC)
+  animation_player.play("finish")

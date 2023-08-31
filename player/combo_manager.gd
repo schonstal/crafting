@@ -22,6 +22,7 @@ func switch_combo(combo:Combo):
   active_combo = combo
   active_combo.active = true
   switched_combo.emit(active_combo)
+  start()
 
 func start() -> void:
   var current_combo := active_combo
@@ -33,6 +34,8 @@ func start() -> void:
     if attack.attack_name != step:
       failed.emit()
       return
+    current_combo.progressed.emit()
     progressed.emit()
       
   succeeded.emit()
+  EventBus.combo_finished.emit()

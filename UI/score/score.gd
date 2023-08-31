@@ -5,13 +5,11 @@ var score = 0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var points: Label = $Points
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-  if Input.is_action_just_pressed("previous"):
-    increment(randi_range(5, 20))
+func _ready() -> void:
+  EventBus.score_changed.connect(_on_score_changed)
 
-func increment(amount: int) -> void:
-  score += amount
+func _on_score_changed(amount: int) -> void:
+  score = amount
   points.text = string_with_commas(score)
   animation_player.stop()
   animation_player.play("Increment")

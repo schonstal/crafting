@@ -216,7 +216,6 @@ position = Vector2(410, 456)
 texture = ExtResource("7_xcy12")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Forgerino/CoalGlow"]
-autoplay = "Burn"
 libraries = {
 "": SubResource("AnimationLibrary_bni2n")
 }

@@ -1,7 +1,8 @@
 class_name AttackState
-extends State
+extends SubState
 
-@onready var animation_player:AnimationPlayer = %AnimationPlayer
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
+@onready var input_handler: InputHandler = %InputHandler
 
 var attack_name : String :
   get:
@@ -9,15 +10,6 @@ var attack_name : String :
     
 @export var big_sparks := true
 @export var delay_frames := 8
-
-func _unhandled_input(event:InputEvent) -> void:
-  _parent._unhandled_input(event)
-
-func _physics_process(delta:float) -> void:
-  _parent._physics_process(delta)
-
-func _process(delta:float) -> void:
-  _parent._process(delta)
 
 func enter(msg:Dictionary = {}) -> void:
   var animation = "%s.%s" % [get_parent().name, name]
@@ -31,7 +23,7 @@ func exit() -> void:
   _parent.exit()
 
 func attack_complete(_name:String) -> void:
-  _state_machine.transition_to("Idle")
+  _state_machine.transition_to(input_handler.input_intent)
 
 func attack():
   owner.attacked.emit(self)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=101 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
@@ -61,6 +61,7 @@
 [ext_resource type="Texture2D" uid="uid://xd7rkv0v7s74" path="res://player/frames/forward_light/ForwardLight0002.png" id="40_h6cgw"]
 [ext_resource type="Script" path="res://player/combo_manager.gd" id="41_7i7le"]
 [ext_resource type="Texture2D" uid="uid://cgwxs8ghq4d42" path="res://player/frames/forward_light/ForwardLight0003.png" id="41_83q21"]
+[ext_resource type="Texture2D" uid="uid://bwhieleuxj8wa" path="res://player/frames/neutral_heavy/NeutralHeavy0001.png" id="41_e334b"]
 [ext_resource type="Texture2D" uid="uid://d116nusbp5k0y" path="res://player/frames/forward_light/ForwardLight0004.png" id="42_dmhg6"]
 [ext_resource type="Texture2D" uid="uid://26man7ihvpd6" path="res://player/frames/forward_light/ForwardLight0005.png" id="43_jmftk"]
 [ext_resource type="Texture2D" uid="uid://bmuutxioq5o6k" path="res://player/frames/forward_light/ForwardLight0006.png" id="44_ixuwl"]
@@ -83,6 +84,7 @@
 [ext_resource type="Texture2D" uid="uid://c2nojyatuquel" path="res://player/frames/up_light/UpLight0009.png" id="70_yw3d1"]
 [ext_resource type="Texture2D" uid="uid://cdr8kf0pf4q1k" path="res://player/frames/up_light/UpLight0010.png" id="71_t4asg"]
 [ext_resource type="Texture2D" uid="uid://dmo1ivie06v0t" path="res://forge/PistonChain.png" id="83_fhi5i"]
+[ext_resource type="Script" path="res://player/InputHandler.gd" id="84_ah00x"]
 [ext_resource type="Texture2D" uid="uid://btc14qntdb0yr" path="res://forge/BottomtPiston.png" id="84_i1nc4"]
 [ext_resource type="Texture2D" uid="uid://c0a12808ky4sr" path="res://forge/TopPiston.png" id="85_v8jcg"]
 [ext_resource type="PackedScene" uid="uid://low51rim76wg" path="res://vfx/impact/impact.tscn" id="86_cmitp"]
@@ -240,6 +242,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("41_e334b")
+}, {
+"duration": 1.0,
 "texture": ExtResource("15_jkjal")
 }, {
 "duration": 1.0,
@@ -253,6 +258,9 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_tycdq")
+}, {
 "duration": 1.0,
 "texture": ExtResource("19_sa7lv")
 }, {
@@ -458,7 +466,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_2pwud"]
 resource_name = "Neutral.Heavy"
-length = 0.3
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -466,10 +474,10 @@ tracks/0/path = NodePath("Skin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0, 1, 2, 3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -490,7 +498,7 @@ tracks/2/path = NodePath("StateMachine/Attack/Neutral/Heavy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -500,7 +508,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7lxud"]
 resource_name = "Neutral.Light"
-length = 0.3
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -508,10 +516,10 @@ tracks/0/path = NodePath("Skin:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [0, 1, 2, 3]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -532,7 +540,7 @@ tracks/2/path = NodePath("StateMachine/Attack/Neutral/Light")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -649,15 +657,9 @@ tracks/2/path = NodePath("StateMachine/Attack/Right/Heavy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"attack"
-}, {
-"args": [],
-"method": &"attack"
-}, {
 "args": [],
 "method": &"attack"
 }]
@@ -923,6 +925,15 @@ delay_frames = 4
 [node name="ComboManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("41_7i7le")
+
+[node name="InputHandler" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("84_ah00x")
+
+[node name="BufferTimer" type="Timer" parent="InputHandler"]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
 
 [node name="PistonChain" type="Sprite2D" parent="."]
 position = Vector2(78, -642)
