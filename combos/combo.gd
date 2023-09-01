@@ -17,6 +17,8 @@ var strikes = [
 
 var active := false
 
+signal failed
+signal succeeded
 signal progressed
 
 func _init() -> void:

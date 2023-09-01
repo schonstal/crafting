@@ -3,9 +3,6 @@ extends Node
 
 var active_combo:Combo
 
-signal failed
-signal succeeded
-signal progressed
 signal switched_combo(combo:Combo)
 
 func _ready() -> void:
@@ -32,10 +29,8 @@ func start() -> void:
     if !current_combo.active:
       return
     if attack.attack_name != step:
-      failed.emit()
+      current_combo.failed.emit()
       return
     current_combo.progressed.emit()
-    progressed.emit()
       
-  succeeded.emit()
-  EventBus.combo_finished.emit()
+  current_combo.succeeded.emit()
