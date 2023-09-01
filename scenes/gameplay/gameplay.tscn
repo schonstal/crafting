@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=39 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
 [ext_resource type="Texture2D" uid="uid://djknp8gslkfww" path="res://player/frames/player_atlas.png" id="3_3ud6d"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://7nah8u56kjhb" path="res://UI/combo/active_combo.tscn" id="18_ma35h"]
 [ext_resource type="Texture2D" uid="uid://cyc7xy7dhiyls" path="res://UI/health/HeartInterior.png" id="18_nup4q"]
 [ext_resource type="Texture2D" uid="uid://c325s04ma58ob" path="res://UI/health/HeartFrame.png" id="19_y0cci"]
+[ext_resource type="Theme" uid="uid://tdwooohgvwc7" path="res://UI/default_theme.tres" id="20_ikhq8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3n6bn"]
 atlas = ExtResource("3_3ud6d")
@@ -169,6 +170,29 @@ glow_enabled = true
 glow_strength = 1.33
 glow_hdr_threshold = 0.79
 adjustment_color_correction = SubResource("GradientTexture1D_nii78")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x00nc"]
+bg_color = Color(0.113281, 0.101563, 0.113281, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi010"]
+bg_color = Color(0.960784, 0.67451, 0.341176, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jwhga"]
 shader = ExtResource("16_b2nmg")
@@ -335,6 +359,24 @@ texture_progress = ExtResource("18_nup4q")
 tint_under = Color(0.078125, 0.078125, 0.0976563, 1)
 tint_over = Color(0, 0, 0, 1)
 tint_progress = Color(1, 0.992157, 0.858824, 1)
+
+[node name="Timer" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="UI/Timer"]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 31.0
+offset_right = 787.0
+offset_bottom = 58.0
+theme = ExtResource("20_ikhq8")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/background = SubResource("StyleBoxFlat_x00nc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oi010")
+value = 50.0
+show_percentage = false
 
 [node name="PaperOverlay" type="Sprite2D" parent="."]
 z_index = 100
