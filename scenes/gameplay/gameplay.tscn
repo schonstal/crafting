@@ -265,7 +265,7 @@ trail_enabled = true
 trail_lifetime = 0.05
 
 [node name="Anvil" type="Sprite2D" parent="Forgerino"]
-position = Vector2(1054, 550)
+position = Vector2(1054, 565)
 texture = ExtResource("10_558kh")
 
 [node name="Vent" type="Sprite2D" parent="Forgerino"]
@@ -289,6 +289,7 @@ position = Vector2(424, 414)
 texture = ExtResource("8_8rmex")
 
 [node name="Bellows" type="Sprite2D" parent="Forgerino"]
+visible = false
 position = Vector2(550, 609)
 texture = ExtResource("9_y6svw")
 
@@ -309,8 +310,7 @@ position = Vector2(76, 453)
 texture = ExtResource("14_d81kg")
 
 [node name="Player" parent="." instance=ExtResource("3_b5cdq")]
-position = Vector2(820, 541)
-metadata/_edit_lock_ = true
+position = Vector2(820, 556)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_juftt")
@@ -400,7 +400,7 @@ auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_color = Color(0.996094, 0.996094, 0.855469, 1)
 theme_override_fonts/font = ExtResource("21_73nlc")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -417,7 +417,7 @@ auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_color = Color(0.886275, 0.729412, 0.756863, 1)
 theme_override_fonts/font = ExtResource("21_73nlc")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 text = ""
 horizontal_alignment = 1
 vertical_alignment = 1

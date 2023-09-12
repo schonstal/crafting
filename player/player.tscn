@@ -1,9 +1,10 @@
-[gd_scene load_steps=101 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=109 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
 [ext_resource type="Texture2D" uid="uid://bv5hfs4lsbc24" path="res://player/frames/back_heavy/BackHeavy0002.png" id="3_4p2id"]
 [ext_resource type="Script" path="res://player/states/idle.gd" id="3_l0tvf"]
+[ext_resource type="Texture2D" uid="uid://clgwr3lwrekd0" path="res://forge/Bucket.png" id="3_tjqut"]
 [ext_resource type="Texture2D" uid="uid://c2hh6ae1qi1lt" path="res://player/frames/back_heavy/BackHeavy0003.png" id="4_2hu4w"]
 [ext_resource type="Script" path="res://player/states/attack.gd" id="4_a4yi7"]
 [ext_resource type="Texture2D" uid="uid://g7cqpgygb1ri" path="res://player/frames/back_heavy/BackHeavy0004.png" id="5_kv5pw"]
@@ -88,6 +89,8 @@
 [ext_resource type="Texture2D" uid="uid://btc14qntdb0yr" path="res://forge/BottomtPiston.png" id="84_i1nc4"]
 [ext_resource type="Texture2D" uid="uid://c0a12808ky4sr" path="res://forge/TopPiston.png" id="85_v8jcg"]
 [ext_resource type="PackedScene" uid="uid://low51rim76wg" path="res://vfx/impact/impact.tscn" id="86_cmitp"]
+[ext_resource type="Texture2D" uid="uid://c4is07m2kbcap" path="res://vfx/kenney particle pack/dirt_03.png" id="90_g7b0p"]
+[ext_resource type="Texture2D" uid="uid://dee8c7irr1fup" path="res://forge/Bellows.png" id="91_b3vr0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0pa78"]
 animations = [{
@@ -622,6 +625,42 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(242, -721)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GPUParticles2D:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bucket:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Bellows:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ke3k6"]
 resource_name = "Right.Heavy"
@@ -827,8 +866,102 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_2fstp"]
+resource_name = "Down.Heavy"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skin:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"down_heavy"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bellows:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_amluy"]
+resource_name = "Down.Light"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skin:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"down_light"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bucket:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ds1k6"]
 _data = {
+"Down.Heavy": SubResource("Animation_2fstp"),
+"Down.Light": SubResource("Animation_amluy"),
 "Idle": SubResource("Animation_ldfrm"),
 "Left.Heavy": SubResource("Animation_niav1"),
 "Left.Light": SubResource("Animation_ih2it"),
@@ -840,6 +973,31 @@ _data = {
 "Up.Heavy": SubResource("Animation_ji2sn"),
 "Up.Light": SubResource("Animation_vvbd4")
 }
+
+[sub_resource type="Gradient" id="Gradient_tpjy8"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3h8ce"]
+gradient = SubResource("Gradient_tpjy8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dsf0g"]
+emission_shape = 3
+emission_box_extents = Vector3(25, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0.01, 100, 0)
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = -250.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.01
+scale_max = 0.05
+color_ramp = SubResource("GradientTexture1D_3h8ce")
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 0.35
+turbulence_influence_max = 0.31
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_vosrb")
@@ -946,3 +1104,19 @@ texture = ExtResource("84_i1nc4")
 [node name="TopPiston" type="Sprite2D" parent="."]
 position = Vector2(244, -797)
 texture = ExtResource("85_v8jcg")
+
+[node name="Bucket" type="Sprite2D" parent="."]
+position = Vector2(71, 80)
+texture = ExtResource("3_tjqut")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(63, 51)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_dsf0g")
+texture = ExtResource("90_g7b0p")
+trail_enabled = true
+
+[node name="Bellows" type="Sprite2D" parent="."]
+position = Vector2(-291, 53)
+texture = ExtResource("91_b3vr0")

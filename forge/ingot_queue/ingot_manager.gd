@@ -3,7 +3,7 @@ extends Node2D
 var ingot_scene := preload("res://ingot/ingot.tscn")
 
 @onready var queue: IngotQueue = $Queue
-@export var active_position := Vector2(715, 0)
+@export var active_position := Vector2(715, 15)
 
 var active_ingot:Ingot
 
@@ -15,19 +15,25 @@ func _ready() -> void:
   active_ingot.position = active_position
   add_child(active_ingot)
   queue.recalculate_positions()
-
-func _process(delta: float) -> void:
-  if Input.is_action_just_pressed("next"):
-    if active_ingot != null:
-      remove_child(active_ingot)
-      active_ingot.appear()
-      active_ingot.active = false
-      queue.push_front(active_ingot)
-      
-    active_ingot = queue.pop_back()
-    active_ingot.active = true
-    active_ingot.position = active_position
+  
+  # This is not the right way to do this but I don't care.
+  EventBus.shift_left.connect(_on_shift_left)
+  EventBus.shift_right.connect(_on_shift_right)
+  
+func _on_shift_left():
+  pass
+  
+func _on_shift_right():
+  if active_ingot != null:
+    remove_child(active_ingot)
     active_ingot.appear()
-    add_child(active_ingot)
+    active_ingot.active = false
+    queue.push_front(active_ingot)
     
-    queue.recalculate_positions()
+  active_ingot = queue.pop_back()
+  active_ingot.active = true
+  active_ingot.position = active_position
+  active_ingot.appear()
+  add_child(active_ingot)
+  
+  queue.recalculate_positions()
