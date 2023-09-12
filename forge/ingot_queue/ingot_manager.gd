@@ -19,12 +19,17 @@ func _ready() -> void:
   # This is not the right way to do this but I don't care.
   EventBus.shift_left.connect(_on_shift_left)
   EventBus.shift_right.connect(_on_shift_right)
+  EventBus.hide_ingot.connect(_on_hide_ingot)
   
+func _on_hide_ingot():
+  active_ingot.visible = false
+
 func _on_shift_left():
   pass
   
 func _on_shift_right():
   if active_ingot != null:
+    active_ingot.heat(-100)
     remove_child(active_ingot)
     active_ingot.appear()
     active_ingot.active = false

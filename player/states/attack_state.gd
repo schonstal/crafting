@@ -26,4 +26,5 @@ func attack_complete(_name:String) -> void:
   _state_machine.transition_to(input_handler.input_intent)
 
 func attack():
+  EventBus.shake.emit(0.5)
   owner.attacked.emit(self)

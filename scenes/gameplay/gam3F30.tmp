@@ -227,10 +227,8 @@ script = ExtResource("1_6r5tg")
 [node name="Shaker" type="Node" parent="Camera2D"]
 script = ExtResource("2_4hau1")
 noise = SubResource("FastNoiseLite_1cupr")
-translation = Vector2(70, 40)
 rotation = 0.0
 decay = SubResource("Curve_ilfnq")
-speed = 5.0
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_wnkns")

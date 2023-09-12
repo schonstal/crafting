@@ -10,3 +10,5 @@ signal score_changed(score:int)
 signal shift_left()
 signal shift_right()
 signal hide_ingot()
+
+signal shake(data:Dictionary)

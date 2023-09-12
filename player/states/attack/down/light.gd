@@ -1,7 +1,7 @@
 extends AttackState
 
 func hide_ingot():
-  pass
+  EventBus.hide_ingot.emit()
   
 func shift_ingot():
   EventBus.shift_right.emit()
