@@ -227,10 +227,11 @@ script = ExtResource("1_6r5tg")
 [node name="Shaker" type="Node" parent="Camera2D"]
 script = ExtResource("2_4hau1")
 noise = SubResource("FastNoiseLite_1cupr")
-translation = Vector2(70, 40)
+translation = Vector2(40, 20)
 rotation = 0.0
 decay = SubResource("Curve_ilfnq")
 speed = 5.0
+zoom = 0.004
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_wnkns")
@@ -337,33 +338,35 @@ position = Vector2(820, 556)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_juftt")
 
-[node name="UI" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Score" parent="UI" instance=ExtResource("17_l2it6")]
+[node name="Score" parent="CanvasLayer/UI" instance=ExtResource("17_l2it6")]
 offset_left = 6.0
 offset_top = 645.0
 offset_right = 46.0
 offset_bottom = 685.0
 
-[node name="ActiveCombo" parent="UI" instance=ExtResource("18_ma35h")]
+[node name="ActiveCombo" parent="CanvasLayer/UI" instance=ExtResource("18_ma35h")]
 
-[node name="Health" type="Control" parent="UI"]
+[node name="Health" type="Control" parent="CanvasLayer/UI"]
 anchors_preset = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 268.0
 offset_bottom = 85.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Health"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/Health"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Health/HBoxContainer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI/Health/HBoxContainer"]
 layout_mode = 2
 fill_mode = 3
 texture_under = ExtResource("18_nup4q")
@@ -373,7 +376,7 @@ tint_under = Color(1, 0.992157, 0.858824, 1)
 tint_over = Color(1, 0.992157, 0.858824, 1)
 tint_progress = Color(1, 0.992157, 0.858824, 1)
 
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="UI/Health/HBoxContainer"]
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="CanvasLayer/UI/Health/HBoxContainer"]
 layout_mode = 2
 value = 40.0
 texture_under = ExtResource("18_nup4q")
@@ -383,7 +386,7 @@ tint_under = Color(0.0859375, 0.0859375, 0.109375, 1)
 tint_over = Color(0, 0, 0, 1)
 tint_progress = Color(0.482353, 0.152941, 0.00784314, 1)
 
-[node name="TextureProgressBar3" type="TextureProgressBar" parent="UI/Health/HBoxContainer"]
+[node name="TextureProgressBar3" type="TextureProgressBar" parent="CanvasLayer/UI/Health/HBoxContainer"]
 layout_mode = 2
 fill_mode = 3
 texture_under = ExtResource("18_nup4q")
@@ -393,14 +396,14 @@ tint_under = Color(0.078125, 0.078125, 0.0976563, 1)
 tint_over = Color(0, 0, 0, 1)
 tint_progress = Color(1, 0.992157, 0.858824, 1)
 
-[node name="Timer" type="Control" parent="UI"]
+[node name="Timer" type="Control" parent="CanvasLayer/UI"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("20_8xcdr")
 gradient = SubResource("GradientTexture1D_troo3")
 
-[node name="ProgressBar" type="ProgressBar" parent="UI/Timer"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/UI/Timer"]
 layout_mode = 0
 offset_left = 311.0
 offset_top = 31.0
@@ -412,7 +415,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_x00nc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_oi010")
 show_percentage = false
 
-[node name="FontAwesome" type="Label" parent="UI/Timer"]
+[node name="FontAwesome" type="Label" parent="CanvasLayer/UI/Timer"]
 layout_mode = 0
 offset_left = 279.0
 offset_top = 30.0
@@ -429,7 +432,7 @@ vertical_alignment = 1
 script = ExtResource("22_npee0")
 icon_name = "sun"
 
-[node name="FontAwesome2" type="Label" parent="UI/Timer"]
+[node name="FontAwesome2" type="Label" parent="CanvasLayer/UI/Timer"]
 layout_mode = 0
 offset_left = 765.0
 offset_top = 31.0
@@ -446,7 +449,7 @@ vertical_alignment = 1
 script = ExtResource("22_npee0")
 icon_name = "moon"
 
-[node name="PaperOverlay" type="Sprite2D" parent="."]
+[node name="PaperOverlay" type="Sprite2D" parent="CanvasLayer"]
 z_index = 100
 material = SubResource("ShaderMaterial_jwhga")
 position = Vector2(661, -352)

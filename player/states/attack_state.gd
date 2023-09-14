@@ -10,6 +10,8 @@ var attack_name : String :
     
 @export var big_sparks := true
 @export var delay_frames := 8
+@export var shake_strength := Vector2(0.0, 0.0)
+@export var shake_duration := 0.05
 
 func enter(msg:Dictionary = {}) -> void:
   var animation = "%s.%s" % [get_parent().name, name]
@@ -26,5 +28,5 @@ func attack_complete(_name:String) -> void:
   _state_machine.transition_to(input_handler.input_intent)
 
 func attack():
-  EventBus.shake.emit(0.5)
+  EventBus.shake.emit(shake_strength, shake_duration)
   owner.attacked.emit(self)

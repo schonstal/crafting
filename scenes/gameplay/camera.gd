@@ -5,5 +5,5 @@ extends Camera2D
 func _ready() -> void:
   EventBus.shake.connect(_on_shake)
   
-func _on_shake(amount:float) -> void:
-  shaker.shake(amount, 1.0)
+func _on_shake(amount:Vector2, duration:float) -> void:
+  shaker.shake(amount, duration)
