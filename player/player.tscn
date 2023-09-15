@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=114 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
@@ -81,6 +81,7 @@
 [ext_resource type="Texture2D" uid="uid://civd7bqprlcf6" path="res://player/frames/up_light/UpLight0004.png" id="65_n8735"]
 [ext_resource type="Texture2D" uid="uid://duwjrebhwtlty" path="res://player/frames/up_light/UpLight0005.png" id="66_6nrm1"]
 [ext_resource type="Texture2D" uid="uid://c2uqch6sga7py" path="res://player/frames/up_light/UpLight0006.png" id="67_jqj3e"]
+[ext_resource type="Animation" uid="uid://c24122tb6l8x" path="res://player/frames/upheavy.res" id="67_ulse3"]
 [ext_resource type="Texture2D" uid="uid://fq8smqqacpxj" path="res://player/frames/up_light/UpLight0007.png" id="68_t0fem"]
 [ext_resource type="Texture2D" uid="uid://bnxqwy1qbpqth" path="res://player/frames/up_light/UpLight0008.png" id="69_h1bpr"]
 [ext_resource type="Texture2D" uid="uid://c2nojyatuquel" path="res://player/frames/up_light/UpLight0009.png" id="70_yw3d1"]
@@ -749,82 +750,46 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PistonChain:visible")
+tracks/3/path = NodePath("GPUParticles2D:emitting")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("TopPiston:position")
+tracks/4/path = NodePath("Bucket:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(244, -797)]
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("BottomtPiston:position")
+tracks/5/path = NodePath("Bellows:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(242, -721)]
+"update": 1,
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("GPUParticles2D:emitting")
+tracks/6/path = NodePath("Skin:skew")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Bucket:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Bellows:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Skin:skew")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -915,84 +880,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_ji2sn"]
-resource_name = "Up.Heavy"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Skin:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.9, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Skin:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"up_heavy"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PistonChain:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TopPiston:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.8, 1.2),
-"transitions": PackedFloat32Array(1, 1.8025, 1, 0.5, 1),
-"update": 0,
-"values": [Vector2(185, -796), Vector2(185, -796), Vector2(185, -460), Vector2(185, -478), Vector2(185, -801)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BottomtPiston:position")
-tracks/4/interp = 2
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.8, 1.2),
-"transitions": PackedFloat32Array(1, 1.86607, 1, 1, 0.5, 1),
-"update": 0,
-"values": [Vector2(185, -721), Vector2(185, -721), Vector2(185, -234), Vector2(185, -232), Vector2(185, -407), Vector2(185, -730)]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("StateMachine/Attack/Up/Heavy")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"attack"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_vvbd4"]
 resource_name = "Up.Light"
 length = 1.1
@@ -1075,8 +962,53 @@ _data = {
 "RESET": SubResource("Animation_n7a5x"),
 "Right.Heavy": SubResource("Animation_ke3k6"),
 "Right.Light": SubResource("Animation_sccd1"),
-"Up.Heavy": SubResource("Animation_ji2sn"),
+"Up.Heavy": ExtResource("67_ulse3"),
 "Up.Light": SubResource("Animation_vvbd4")
+}
+
+[sub_resource type="Animation" id="Animation_igr7a"]
+resource_name = "Up.Heavy"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PistonChain:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TopPiston:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1.8025, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(185, -796), Vector2(185, -796), Vector2(185, -460), Vector2(185, -478), Vector2(185, -801)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BottomtPiston:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1.86607, 1, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(185, -721), Vector2(185, -721), Vector2(185, -234), Vector2(185, -232), Vector2(185, -407), Vector2(185, -730)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jswc3"]
+_data = {
+"Activate": SubResource("Animation_igr7a")
 }
 
 [sub_resource type="Gradient" id="Gradient_tpjy8"]
@@ -1122,6 +1054,13 @@ unique_name_in_owner = true
 speed_scale = 2.0
 libraries = {
 "": SubResource("AnimationLibrary_ds1k6")
+}
+
+[node name="PistonAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_jswc3")
 }
 
 [node name="StateMachine" type="Node" parent="."]
@@ -1212,15 +1151,16 @@ wait_time = 0.1
 one_shot = true
 
 [node name="PistonChain" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(78, -642)
 texture = ExtResource("83_fhi5i")
 
 [node name="BottomtPiston" type="Sprite2D" parent="."]
-position = Vector2(242, -721)
+position = Vector2(185, -721)
 texture = ExtResource("84_i1nc4")
 
 [node name="TopPiston" type="Sprite2D" parent="."]
-position = Vector2(244, -797)
+position = Vector2(185, -796)
 texture = ExtResource("85_v8jcg")
 
 [node name="Bucket" type="Sprite2D" parent="."]
