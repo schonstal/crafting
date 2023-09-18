@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=39 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="1_6r5tg"]
 [ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
@@ -21,8 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://becw6yl857go5" path="res://UI/score/score.tscn" id="17_l2it6"]
 [ext_resource type="Texture2D" uid="uid://b12xa4qmqc6d3" path="res://scenes/gameplay/Vintage_Paper_Texture_(9789792113).jpg" id="17_mr81x"]
 [ext_resource type="PackedScene" uid="uid://7nah8u56kjhb" path="res://UI/combo/active_combo.tscn" id="18_ma35h"]
-[ext_resource type="Texture2D" uid="uid://cyc7xy7dhiyls" path="res://UI/health/HeartInterior.png" id="18_nup4q"]
-[ext_resource type="Texture2D" uid="uid://c325s04ma58ob" path="res://UI/health/HeartFrame.png" id="19_y0cci"]
+[ext_resource type="PackedScene" uid="uid://ii7pun5od11t" path="res://UI/health/health.tscn" id="20_6pa3y"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1cupr"]
 frequency = 1.0
@@ -319,47 +318,7 @@ offset_bottom = 685.0
 
 [node name="ActiveCombo" parent="CanvasLayer/UI" instance=ExtResource("18_ma35h")]
 
-[node name="Health" type="Control" parent="CanvasLayer/UI"]
-anchors_preset = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 268.0
-offset_bottom = 85.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/Health"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/UI/Health/HBoxContainer"]
-layout_mode = 2
-fill_mode = 3
-texture_under = ExtResource("18_nup4q")
-texture_over = ExtResource("19_y0cci")
-texture_progress = ExtResource("18_nup4q")
-tint_under = Color(1, 0.992157, 0.858824, 1)
-tint_over = Color(1, 0.992157, 0.858824, 1)
-tint_progress = Color(1, 0.992157, 0.858824, 1)
-
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="CanvasLayer/UI/Health/HBoxContainer"]
-layout_mode = 2
-value = 40.0
-texture_under = ExtResource("18_nup4q")
-texture_over = ExtResource("19_y0cci")
-texture_progress = ExtResource("18_nup4q")
-tint_under = Color(0.0859375, 0.0859375, 0.109375, 1)
-tint_over = Color(0, 0, 0, 1)
-tint_progress = Color(0.482353, 0.152941, 0.00784314, 1)
-
-[node name="TextureProgressBar3" type="TextureProgressBar" parent="CanvasLayer/UI/Health/HBoxContainer"]
-layout_mode = 2
-fill_mode = 3
-texture_under = ExtResource("18_nup4q")
-texture_over = ExtResource("19_y0cci")
-texture_progress = ExtResource("18_nup4q")
-tint_under = Color(0.078125, 0.078125, 0.0976563, 1)
-tint_over = Color(0, 0, 0, 1)
-tint_progress = Color(1, 0.992157, 0.858824, 1)
+[node name="Health" parent="CanvasLayer/UI" instance=ExtResource("20_6pa3y")]
 
 [node name="PaperOverlay" type="Sprite2D" parent="CanvasLayer"]
 z_index = 100

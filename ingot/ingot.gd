@@ -28,6 +28,7 @@ var active := false :
     if active:
       active_combo = combos[type].get_combo(progress)
       active_combo.failed.connect(_on_combo_failed)
+      active_combo.progressed.connect(_on_combo_progressed)
       EventBus.combo_changed.emit(active_combo)
       
 var active_combo: Combo
@@ -43,6 +44,13 @@ func _ready() -> void:
   self.type = randi_range(0, 7)
   
 func _on_combo_failed() -> void:
+  fail()
+  
+func _on_combo_progressed() -> void:
+  if temp <= 0:
+    fail()
+    
+func fail():
   animation_player.play("shatter")
   
 func _process(delta: float) -> void:
