@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=40 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="1_6r5tg"]
 [ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
@@ -23,10 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://7nah8u56kjhb" path="res://UI/combo/active_combo.tscn" id="18_ma35h"]
 [ext_resource type="Texture2D" uid="uid://cyc7xy7dhiyls" path="res://UI/health/HeartInterior.png" id="18_nup4q"]
 [ext_resource type="Texture2D" uid="uid://c325s04ma58ob" path="res://UI/health/HeartFrame.png" id="19_y0cci"]
-[ext_resource type="Script" path="res://UI/timer/timer.gd" id="20_8xcdr"]
-[ext_resource type="Theme" uid="uid://tdwooohgvwc7" path="res://UI/default_theme.tres" id="20_ikhq8"]
-[ext_resource type="FontFile" uid="uid://ccn25yaua0di3" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="21_73nlc"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="22_npee0"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1cupr"]
 frequency = 1.0
@@ -183,37 +179,6 @@ glow_enabled = true
 glow_strength = 1.33
 glow_hdr_threshold = 0.79
 adjustment_color_correction = SubResource("GradientTexture1D_nii78")
-
-[sub_resource type="Gradient" id="Gradient_312aq"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.06867, 0.236051, 0.549356, 0.824701, 1)
-colors = PackedColorArray(1, 0.996078, 0.901961, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.514366, 0.16211, 0.0424238, 1, 0.170134, 0.216288, 0.273133, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_troo3"]
-gradient = SubResource("Gradient_312aq")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x00nc"]
-bg_color = Color(0.113281, 0.101563, 0.113281, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi010"]
-bg_color = Color(0.996094, 0.988281, 0.855469, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jwhga"]
 shader = ExtResource("16_b2nmg")
@@ -395,59 +360,6 @@ texture_progress = ExtResource("18_nup4q")
 tint_under = Color(0.078125, 0.078125, 0.0976563, 1)
 tint_over = Color(0, 0, 0, 1)
 tint_progress = Color(1, 0.992157, 0.858824, 1)
-
-[node name="Timer" type="Control" parent="CanvasLayer/UI"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("20_8xcdr")
-gradient = SubResource("GradientTexture1D_troo3")
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/UI/Timer"]
-layout_mode = 0
-offset_left = 311.0
-offset_top = 31.0
-offset_right = 755.0
-offset_bottom = 58.0
-theme = ExtResource("20_ikhq8")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/background = SubResource("StyleBoxFlat_x00nc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_oi010")
-show_percentage = false
-
-[node name="FontAwesome" type="Label" parent="CanvasLayer/UI/Timer"]
-layout_mode = 0
-offset_left = 279.0
-offset_top = 30.0
-offset_right = 303.0
-offset_bottom = 57.0
-auto_translate = false
-localize_numeral_system = false
-theme_override_colors/font_color = Color(0.996094, 0.996094, 0.855469, 1)
-theme_override_fonts/font = ExtResource("21_73nlc")
-theme_override_font_sizes/font_size = 16
-text = ""
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("22_npee0")
-icon_name = "sun"
-
-[node name="FontAwesome2" type="Label" parent="CanvasLayer/UI/Timer"]
-layout_mode = 0
-offset_left = 765.0
-offset_top = 31.0
-offset_right = 789.0
-offset_bottom = 58.0
-auto_translate = false
-localize_numeral_system = false
-theme_override_colors/font_color = Color(0.886275, 0.729412, 0.756863, 1)
-theme_override_fonts/font = ExtResource("21_73nlc")
-theme_override_font_sizes/font_size = 16
-text = ""
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("22_npee0")
-icon_name = "moon"
 
 [node name="PaperOverlay" type="Sprite2D" parent="CanvasLayer"]
 z_index = 100
