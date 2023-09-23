@@ -17,7 +17,7 @@ var time_left: float :
     return active_timer.time_left
   
 func add_time(amount: float):
-  active_timer.wait_time = active_timer.time_left + amount
+  active_timer.start(ceil(active_timer.time_left) + amount - 0.001)
   if amount > 0:
     time_increased.emit()
   elif amount < 0:
