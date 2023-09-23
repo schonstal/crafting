@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=40 format=3 uid="uid://b11l2h1ap31xm"]
 
+[ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_2lsjj"]
 [ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="1_6r5tg"]
 [ext_resource type="Texture2D" uid="uid://jcp0ksm7oel7" path="res://scenes/gameplay/background.png" id="1_wnkns"]
 [ext_resource type="Script" path="res://util/shaker.gd" id="2_4hau1"]
-[ext_resource type="Texture2D" uid="uid://djknp8gslkfww" path="res://player/frames/player_atlas.png" id="3_3ud6d"]
+[ext_resource type="Resource" uid="uid://c7btph4x2iayi" path="res://service/clock/clock.tres" id="2_lohjo"]
 [ext_resource type="PackedScene" uid="uid://ckpi8c0ctwu7s" path="res://player/player.tscn" id="3_b5cdq"]
 [ext_resource type="Texture2D" uid="uid://28t167ppbjcv" path="res://forge/Kiln.png" id="4_580f8"]
 [ext_resource type="Texture2D" uid="uid://bfpe3mgwcnr65" path="res://forge/KilnLight.png" id="5_imyta"]
@@ -22,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://b12xa4qmqc6d3" path="res://scenes/gameplay/Vintage_Paper_Texture_(9789792113).jpg" id="17_mr81x"]
 [ext_resource type="PackedScene" uid="uid://7nah8u56kjhb" path="res://UI/combo/active_combo.tscn" id="18_ma35h"]
 [ext_resource type="PackedScene" uid="uid://ii7pun5od11t" path="res://UI/health/health.tscn" id="20_6pa3y"]
+[ext_resource type="PackedScene" uid="uid://dybc22nlflf1c" path="res://UI/timer/timer.tscn" id="21_heyl2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1cupr"]
 frequency = 1.0
@@ -30,11 +32,6 @@ metadata/_preview_in_3d_space_ = true
 [sub_resource type="Curve" id="Curve_ilfnq"]
 _data = [Vector2(0, 1), 0.0, -0.0305559, 0, 0, Vector2(1, 0), -2.76061, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3n6bn"]
-atlas = ExtResource("3_3ud6d")
-region = Rect2(4, 1172, 301, 369)
-margin = Rect2(3, 1, 4, 2)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_brd48"]
 blend_mode = 1
@@ -183,6 +180,12 @@ adjustment_color_correction = SubResource("GradientTexture1D_nii78")
 shader = ExtResource("16_b2nmg")
 
 [node name="Gameplay" type="Node2D"]
+script = ExtResource("1_2lsjj")
+clock = ExtResource("2_lohjo")
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -201,11 +204,6 @@ zoom = 0.004
 texture = ExtResource("1_wnkns")
 centered = false
 metadata/_edit_lock_ = true
-
-[node name="BlacksmithIdle" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(831, 410)
-texture = SubResource("AtlasTexture_3n6bn")
 
 [node name="Forgerino" type="Node2D" parent="."]
 
@@ -305,6 +303,7 @@ environment = SubResource("Environment_juftt")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" type="Control" parent="CanvasLayer"]
+custom_minimum_size = Vector2(1280, 720)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -319,6 +318,10 @@ offset_bottom = 685.0
 [node name="ActiveCombo" parent="CanvasLayer/UI" instance=ExtResource("18_ma35h")]
 
 [node name="Health" parent="CanvasLayer/UI" instance=ExtResource("20_6pa3y")]
+visible = false
+
+[node name="Timer" parent="CanvasLayer/UI" instance=ExtResource("21_heyl2")]
+layout_mode = 1
 
 [node name="PaperOverlay" type="Sprite2D" parent="CanvasLayer"]
 z_index = 100

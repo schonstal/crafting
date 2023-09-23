@@ -1,9 +1,8 @@
 extends Control
 
-@onready var progress_bar: ProgressBar = $ProgressBar
-@export var gradient: GradientTexture1D
+@export var clock: Clock
+
+@onready var time_label: Label = %TimeLabel
 
 func _process(delta: float) -> void:
-  progress_bar.value += delta
-  if progress_bar.value >= 100:
-    get_tree().reload_current_scene()
+  time_label.text = "%02d" % clock.time_left

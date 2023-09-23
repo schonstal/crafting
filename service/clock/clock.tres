@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="Clock" load_steps=2 format=3 uid="uid://c7btph4x2iayi"]
+
+[ext_resource type="Script" path="res://service/clock/clock.gd" id="1_kchk3"]
+
+[resource]
+script = ExtResource("1_kchk3")

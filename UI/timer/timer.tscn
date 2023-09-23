@@ -1,91 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://dybc22nlflf1c"]
+[gd_scene load_steps=4 format=3 uid="uid://dybc22nlflf1c"]
 
 [ext_resource type="Script" path="res://UI/timer/timer.gd" id="1_3nr68"]
 [ext_resource type="Theme" uid="uid://tdwooohgvwc7" path="res://UI/default_theme.tres" id="2_lbwe3"]
-[ext_resource type="FontFile" uid="uid://ccn25yaua0di3" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_5rc2k"]
-[ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="4_e3rcl"]
-
-[sub_resource type="Gradient" id="Gradient_312aq"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0.06867, 0.236051, 0.549356, 0.824701, 1)
-colors = PackedColorArray(1, 0.996078, 0.901961, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.514366, 0.16211, 0.0424238, 1, 0.170134, 0.216288, 0.273133, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_troo3"]
-gradient = SubResource("Gradient_312aq")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x00nc"]
-bg_color = Color(0.113281, 0.101563, 0.113281, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi010"]
-bg_color = Color(0.996094, 0.988281, 0.855469, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[ext_resource type="Resource" uid="uid://c7btph4x2iayi" path="res://service/clock/clock.tres" id="2_trqsp"]
 
 [node name="Timer" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+script = ExtResource("1_3nr68")
+clock = ExtResource("2_trqsp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_3nr68")
-gradient = SubResource("GradientTexture1D_troo3")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_left = 311.0
-offset_top = 31.0
-offset_right = 755.0
-offset_bottom = 58.0
+[node name="TimeLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
 theme = ExtResource("2_lbwe3")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/background = SubResource("StyleBoxFlat_x00nc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_oi010")
-show_percentage = false
-
-[node name="FontAwesome" type="Label" parent="."]
-layout_mode = 0
-offset_left = 279.0
-offset_top = 30.0
-offset_right = 303.0
-offset_bottom = 57.0
-auto_translate = false
-localize_numeral_system = false
-theme_override_colors/font_color = Color(0.996094, 0.996094, 0.855469, 1)
-theme_override_fonts/font = ExtResource("3_5rc2k")
-theme_override_font_sizes/font_size = 16
-text = ""
+theme_override_font_sizes/font_size = 64
+text = "16"
 horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("4_e3rcl")
-icon_name = "sun"
-
-[node name="FontAwesome2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 765.0
-offset_top = 31.0
-offset_right = 789.0
-offset_bottom = 58.0
-auto_translate = false
-localize_numeral_system = false
-theme_override_colors/font_color = Color(0.886275, 0.729412, 0.756863, 1)
-theme_override_fonts/font = ExtResource("3_5rc2k")
-theme_override_font_sizes/font_size = 16
-text = ""
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("4_e3rcl")
-icon_name = "moon"
