@@ -100,6 +100,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+size_flags_vertical = 0
 script = ExtResource("1_3nr68")
 clock = ExtResource("2_trqsp")
 
