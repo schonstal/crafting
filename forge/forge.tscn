@@ -1,0 +1,312 @@
+[gd_scene load_steps=27 format=3 uid="uid://rcfjmofbyla4"]
+
+[ext_resource type="Script" path="res://forge/forge.gd" id="1_xcp1w"]
+[ext_resource type="Texture2D" uid="uid://28t167ppbjcv" path="res://forge/Kiln.png" id="2_jpcl2"]
+[ext_resource type="Texture2D" uid="uid://bfpe3mgwcnr65" path="res://forge/KilnLight.png" id="3_iorp0"]
+[ext_resource type="Texture2D" uid="uid://ckaayw0qqcldu" path="res://forge/CrucibleBack.png" id="4_5h56y"]
+[ext_resource type="Texture2D" uid="uid://dwcydg2c56kjd" path="res://forge/Coals.png" id="5_gnx8k"]
+[ext_resource type="Texture2D" uid="uid://c28jy82pc8ry" path="res://scenes/gameplay/Anvil.png" id="6_lihnq"]
+[ext_resource type="Texture2D" uid="uid://dotvon1gna51q" path="res://scenes/gameplay/Vent.png" id="7_wv430"]
+[ext_resource type="PackedScene" uid="uid://q4wgqt3g46ha" path="res://forge/ingot_queue/ingot_queue.tscn" id="8_lo448"]
+[ext_resource type="Texture2D" uid="uid://djlheh2p02pyi" path="res://forge/CrucibleFront.png" id="9_6t116"]
+[ext_resource type="Texture2D" uid="uid://dee8c7irr1fup" path="res://forge/Bellows.png" id="10_0mvhl"]
+[ext_resource type="Script" path="res://forge/heat_gauge.gd" id="11_5yw36"]
+[ext_resource type="Texture2D" uid="uid://bff8orailr7kw" path="res://UI/heat_gauge/HeatGaugeDisplay.png" id="11_pkvwt"]
+[ext_resource type="Texture2D" uid="uid://dho76uylx1e0m" path="res://UI/heat_gauge/HeatGaugeNeedle.png" id="12_7m4fb"]
+[ext_resource type="Texture2D" uid="uid://cx36dct8c121w" path="res://UI/heat_gauge/HeatGaugeFrame.png" id="13_esh7c"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_brd48"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xvown"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_x0ltn"]
+resource_name = "Burn"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(2, 2, 2, 1), Color(2, 2, 2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HeatGauge/Needle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5708, -1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../KilnLightGlow:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(2, 2, 2, 1), Color(2, 2, 2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dm6n4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(2, 2, 2, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HeatGauge/Needle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../KilnLightGlow:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(2, 2, 2, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bni2n"]
+_data = {
+"Burn": SubResource("Animation_x0ltn"),
+"RESET": SubResource("Animation_dm6n4")
+}
+
+[sub_resource type="Gradient" id="Gradient_uw82h"]
+offsets = PackedFloat32Array(0, 0.270936, 0.669951, 0.881773, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.519531, 0.144531, 0.03125, 1, 0.103482, 0.0663441, 0.04408, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t22kl"]
+gradient = SubResource("Gradient_uw82h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jtlq6"]
+lifetime_randomness = 0.52
+emission_shape = 3
+emission_box_extents = Vector3(1, 100, 1)
+particle_flag_disable_z = true
+direction = Vector3(1, 0.25, 0)
+gravity = Vector3(0, -40, 0)
+initial_velocity_max = 366.19
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_t22kl")
+turbulence_enabled = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fykda"]
+lifetime_randomness = 0.52
+emission_shape = 3
+emission_box_extents = Vector3(200, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+flatness = 1.0
+gravity = Vector3(0, -100, 0)
+initial_velocity_max = 366.19
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_t22kl")
+hue_variation_max = 0.17
+turbulence_enabled = true
+
+[sub_resource type="Animation" id="Animation_5jn21"]
+resource_name = "blur"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Needle/Blur:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [-0.0872665, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Needle/Blur2:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [-0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ees1a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Needle/Blur:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Needle/Blur2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_btooi"]
+_data = {
+"RESET": SubResource("Animation_ees1a"),
+"blur": SubResource("Animation_5jn21")
+}
+
+[node name="Forge" type="Node2D"]
+script = ExtResource("1_xcp1w")
+
+[node name="Kiln" type="Sprite2D" parent="."]
+position = Vector2(155, 324)
+texture = ExtResource("2_jpcl2")
+
+[node name="KilnLight" type="Sprite2D" parent="."]
+position = Vector2(246, 382)
+texture = ExtResource("3_iorp0")
+
+[node name="KilnLightGlow" type="Sprite2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+material = SubResource("CanvasItemMaterial_brd48")
+position = Vector2(246, 382)
+texture = ExtResource("3_iorp0")
+
+[node name="CrucibleBack" type="Sprite2D" parent="."]
+position = Vector2(433, 364)
+texture = ExtResource("4_5h56y")
+
+[node name="Coals" type="Sprite2D" parent="."]
+position = Vector2(410, 456)
+texture = ExtResource("5_gnx8k")
+
+[node name="CoalGlow" type="Sprite2D" parent="."]
+modulate = Color(2, 2, 2, 1)
+material = SubResource("CanvasItemMaterial_xvown")
+position = Vector2(410, 456)
+texture = ExtResource("5_gnx8k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CoalGlow"]
+libraries = {
+"": SubResource("AnimationLibrary_bni2n")
+}
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(266, 389)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_jtlq6")
+lifetime = 2.0
+trail_enabled = true
+trail_lifetime = 0.05
+
+[node name="Anvil" type="Sprite2D" parent="."]
+position = Vector2(1054, 565)
+texture = ExtResource("6_lihnq")
+
+[node name="Vent" type="Sprite2D" parent="."]
+position = Vector2(255, -4)
+texture = ExtResource("7_wv430")
+centered = false
+
+[node name="IngotManager" parent="." instance=ExtResource("8_lo448")]
+position = Vector2(289, 451)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(425, 457)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_fykda")
+lifetime = 2.0
+trail_enabled = true
+trail_lifetime = 0.05
+
+[node name="CrucibleFront" type="Sprite2D" parent="."]
+position = Vector2(424, 414)
+texture = ExtResource("9_6t116")
+
+[node name="Bellows" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(550, 609)
+texture = ExtResource("10_0mvhl")
+
+[node name="HeatGauge" type="Node2D" parent="."]
+script = ExtResource("11_5yw36")
+
+[node name="Display" type="Sprite2D" parent="HeatGauge"]
+position = Vector2(87, 324)
+texture = ExtResource("11_pkvwt")
+
+[node name="Needle" type="Sprite2D" parent="HeatGauge"]
+position = Vector2(86, 326)
+rotation = -1.5708
+texture = ExtResource("12_7m4fb")
+offset = Vector2(0, -15)
+
+[node name="Blur" type="Sprite2D" parent="HeatGauge/Needle"]
+modulate = Color(1, 1, 1, 0.541176)
+texture = ExtResource("12_7m4fb")
+offset = Vector2(0, -15)
+
+[node name="Blur2" type="Sprite2D" parent="HeatGauge/Needle"]
+modulate = Color(1, 1, 1, 0.541176)
+texture = ExtResource("12_7m4fb")
+offset = Vector2(0, -15)
+
+[node name="Frame" type="Sprite2D" parent="HeatGauge"]
+position = Vector2(76, 453)
+texture = ExtResource("13_esh7c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HeatGauge"]
+libraries = {
+"": SubResource("AnimationLibrary_btooi")
+}

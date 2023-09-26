@@ -14,3 +14,5 @@ signal shift_right()
 signal hide_ingot()
 
 signal shake(strength, duration)
+
+signal bellows_pressed()

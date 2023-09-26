@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=20 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_2lsjj"]
 [ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="1_6r5tg"]
@@ -6,18 +6,7 @@
 [ext_resource type="Script" path="res://util/shaker.gd" id="2_4hau1"]
 [ext_resource type="Resource" uid="uid://c7btph4x2iayi" path="res://service/clock/clock.tres" id="2_lohjo"]
 [ext_resource type="PackedScene" uid="uid://ckpi8c0ctwu7s" path="res://player/player.tscn" id="3_b5cdq"]
-[ext_resource type="Texture2D" uid="uid://28t167ppbjcv" path="res://forge/Kiln.png" id="4_580f8"]
-[ext_resource type="Texture2D" uid="uid://bfpe3mgwcnr65" path="res://forge/KilnLight.png" id="5_imyta"]
-[ext_resource type="Texture2D" uid="uid://ckaayw0qqcldu" path="res://forge/CrucibleBack.png" id="6_a2fj5"]
-[ext_resource type="Texture2D" uid="uid://dwcydg2c56kjd" path="res://forge/Coals.png" id="7_xcy12"]
-[ext_resource type="PackedScene" uid="uid://q4wgqt3g46ha" path="res://forge/ingot_queue/ingot_queue.tscn" id="7_yd7y0"]
-[ext_resource type="Texture2D" uid="uid://djlheh2p02pyi" path="res://forge/CrucibleFront.png" id="8_8rmex"]
-[ext_resource type="Texture2D" uid="uid://dee8c7irr1fup" path="res://forge/Bellows.png" id="9_y6svw"]
-[ext_resource type="Texture2D" uid="uid://c28jy82pc8ry" path="res://scenes/gameplay/Anvil.png" id="10_558kh"]
-[ext_resource type="Texture2D" uid="uid://dotvon1gna51q" path="res://scenes/gameplay/Vent.png" id="11_s6so3"]
-[ext_resource type="Texture2D" uid="uid://bff8orailr7kw" path="res://UI/heat_gauge/HeatGaugeDisplay.png" id="12_i1rop"]
-[ext_resource type="Texture2D" uid="uid://dho76uylx1e0m" path="res://UI/heat_gauge/HeatGaugeNeedle.png" id="13_sfbfk"]
-[ext_resource type="Texture2D" uid="uid://cx36dct8c121w" path="res://UI/heat_gauge/HeatGaugeFrame.png" id="14_d81kg"]
+[ext_resource type="PackedScene" uid="uid://rcfjmofbyla4" path="res://forge/forge.tscn" id="6_u66sf"]
 [ext_resource type="Shader" path="res://scenes/gameplay/paper_texture.gdshader" id="16_b2nmg"]
 [ext_resource type="PackedScene" uid="uid://becw6yl857go5" path="res://UI/score/score.tscn" id="17_l2it6"]
 [ext_resource type="Texture2D" uid="uid://b12xa4qmqc6d3" path="res://scenes/gameplay/Vintage_Paper_Texture_(9789792113).jpg" id="17_mr81x"]
@@ -32,135 +21,6 @@ metadata/_preview_in_3d_space_ = true
 [sub_resource type="Curve" id="Curve_ilfnq"]
 _data = [Vector2(0, 1), 0.0, -0.0305559, 0, 0, Vector2(1, 0), -2.76061, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_brd48"]
-blend_mode = 1
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xvown"]
-blend_mode = 1
-
-[sub_resource type="Animation" id="Animation_x0ltn"]
-resource_name = "Burn"
-length = 10.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(2, 2, 2, 1), Color(2, 2, 2, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../HeatGauge/Needle:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.5708, -1.5708]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../KilnLightGlow:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(2, 2, 2, 1), Color(2, 2, 2, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_dm6n4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(2, 2, 2, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../HeatGauge/Needle:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.5708]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../KilnLightGlow:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(2, 2, 2, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bni2n"]
-_data = {
-"Burn": SubResource("Animation_x0ltn"),
-"RESET": SubResource("Animation_dm6n4")
-}
-
-[sub_resource type="Gradient" id="Gradient_uw82h"]
-offsets = PackedFloat32Array(0, 0.270936, 0.669951, 0.881773, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.519531, 0.144531, 0.03125, 1, 0.103482, 0.0663441, 0.04408, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_t22kl"]
-gradient = SubResource("Gradient_uw82h")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jtlq6"]
-lifetime_randomness = 0.52
-emission_shape = 3
-emission_box_extents = Vector3(1, 100, 1)
-particle_flag_disable_z = true
-direction = Vector3(1, 0.25, 0)
-gravity = Vector3(0, -40, 0)
-initial_velocity_max = 366.19
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_max = 3.0
-color_ramp = SubResource("GradientTexture1D_t22kl")
-turbulence_enabled = true
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fykda"]
-lifetime_randomness = 0.52
-emission_shape = 3
-emission_box_extents = Vector3(200, 1, 1)
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-flatness = 1.0
-gravity = Vector3(0, -100, 0)
-initial_velocity_max = 366.19
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_max = 3.0
-color_ramp = SubResource("GradientTexture1D_t22kl")
-hue_variation_max = 0.17
-turbulence_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_rlkje"]
 offsets = PackedFloat32Array(0.044335, 0.108374, 0.497537, 1)
@@ -205,94 +65,7 @@ texture = ExtResource("1_wnkns")
 centered = false
 metadata/_edit_lock_ = true
 
-[node name="Forgerino" type="Node2D" parent="."]
-
-[node name="Kiln" type="Sprite2D" parent="Forgerino"]
-position = Vector2(155, 324)
-texture = ExtResource("4_580f8")
-
-[node name="KilnLight" type="Sprite2D" parent="Forgerino"]
-position = Vector2(246, 382)
-texture = ExtResource("5_imyta")
-
-[node name="KilnLightGlow" type="Sprite2D" parent="Forgerino"]
-modulate = Color(2, 2, 2, 1)
-material = SubResource("CanvasItemMaterial_brd48")
-position = Vector2(246, 382)
-texture = ExtResource("5_imyta")
-
-[node name="CrucibleBack" type="Sprite2D" parent="Forgerino"]
-position = Vector2(433, 364)
-texture = ExtResource("6_a2fj5")
-
-[node name="Coals" type="Sprite2D" parent="Forgerino"]
-position = Vector2(410, 456)
-texture = ExtResource("7_xcy12")
-
-[node name="CoalGlow" type="Sprite2D" parent="Forgerino"]
-modulate = Color(2, 2, 2, 1)
-material = SubResource("CanvasItemMaterial_xvown")
-position = Vector2(410, 456)
-texture = ExtResource("7_xcy12")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Forgerino/CoalGlow"]
-libraries = {
-"": SubResource("AnimationLibrary_bni2n")
-}
-
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="Forgerino"]
-visible = false
-position = Vector2(266, 389)
-emitting = false
-process_material = SubResource("ParticleProcessMaterial_jtlq6")
-lifetime = 2.0
-trail_enabled = true
-trail_lifetime = 0.05
-
-[node name="Anvil" type="Sprite2D" parent="Forgerino"]
-position = Vector2(1054, 565)
-texture = ExtResource("10_558kh")
-
-[node name="Vent" type="Sprite2D" parent="Forgerino"]
-position = Vector2(255, -4)
-texture = ExtResource("11_s6so3")
-centered = false
-
-[node name="IngotManager" parent="Forgerino" instance=ExtResource("7_yd7y0")]
-position = Vector2(289, 451)
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Forgerino"]
-position = Vector2(425, 457)
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_fykda")
-lifetime = 2.0
-trail_enabled = true
-trail_lifetime = 0.05
-
-[node name="CrucibleFront" type="Sprite2D" parent="Forgerino"]
-position = Vector2(424, 414)
-texture = ExtResource("8_8rmex")
-
-[node name="Bellows" type="Sprite2D" parent="Forgerino"]
-visible = false
-position = Vector2(550, 609)
-texture = ExtResource("9_y6svw")
-
-[node name="HeatGauge" type="Node2D" parent="Forgerino"]
-
-[node name="Display" type="Sprite2D" parent="Forgerino/HeatGauge"]
-position = Vector2(87, 324)
-texture = ExtResource("12_i1rop")
-
-[node name="Needle" type="Sprite2D" parent="Forgerino/HeatGauge"]
-position = Vector2(88, 330)
-rotation = -1.5708
-texture = ExtResource("13_sfbfk")
-offset = Vector2(0, -15)
-
-[node name="Frame" type="Sprite2D" parent="Forgerino/HeatGauge"]
-position = Vector2(76, 453)
-texture = ExtResource("14_d81kg")
+[node name="Forge" parent="." instance=ExtResource("6_u66sf")]
 
 [node name="Player" parent="." instance=ExtResource("3_b5cdq")]
 position = Vector2(820, 556)
