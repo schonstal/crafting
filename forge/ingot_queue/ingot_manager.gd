@@ -21,6 +21,20 @@ func _ready() -> void:
   EventBus.shift_right.connect(_on_shift_right)
   EventBus.hide_ingot.connect(_on_hide_ingot)
   
+func _process(delta: float) -> void:
+  for child in queue.get_children():
+    if child is Ingot:
+      var ingot:Ingot = child
+      if ingot.active:
+        ingot.temp -= delta * 20
+      else:
+        if owner.heat > 0:
+          ingot.temp += delta * 20 * owner.heat
+        else:
+          ingot.temp -= delta * 5
+          
+      ingot.temp = clamp(ingot.temp, 0, 100)
+  
 func _on_hide_ingot():
   active_ingot.visible = false
 
