@@ -7,6 +7,7 @@ var combo:Combo
 @onready var nine_patch_rect: NinePatchRect = $NinePatchRect
 @onready var instructions: Control = $Instructions
 @onready var combo_v_box: VBoxContainer = $Instructions/ComboVBox
+@onready var ingot: AnimatedSprite2D = $NinePatchRect/Ingot
 
 var step_scene = preload("res://UI/combo/combo_h_box.tscn")
 var progress := 0
@@ -31,6 +32,10 @@ func change_combo(new_combo: Combo):
   combo.progressed.connect(_on_combo_progressed)
   update_steps(combo)
   update_rect(combo)
+  update_ingot(combo)
+  
+func update_ingot(combo: Combo) -> void:
+  ingot.frame = combo.ingot_type
   
 func update_rect(combo: Combo) -> void:
   nine_patch_rect.size.y = 52

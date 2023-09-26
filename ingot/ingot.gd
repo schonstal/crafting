@@ -10,14 +10,14 @@ var progress := 0
 
 # Game jam lol
 static var combos = [
-  ComboGroup.new(),
-  ComboGroup.new(),
-  ComboGroup.new(),
-  ComboGroup.new(),
-  ComboGroup.new(),
-  ComboGroup.new(),
-  ComboGroup.new(),
-  ComboGroup.new()
+  Combo.new(),
+  Combo.new(),
+  Combo.new(),
+  Combo.new(),
+  Combo.new(),
+  Combo.new(),
+  Combo.new(),
+  Combo.new()
 ]
 
 var active := false :
@@ -26,7 +26,8 @@ var active := false :
     if active_combo:
       active_combo.failed.disconnect(_on_combo_failed)
     if active:
-      active_combo = combos[type].get_combo(progress)
+      active_combo = combos[type]
+      active_combo.ingot_type = type
       active_combo.failed.connect(_on_combo_failed)
       active_combo.progressed.connect(_on_combo_progressed)
       EventBus.combo_changed.emit(active_combo)
