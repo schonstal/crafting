@@ -1,11 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://rcfjmofbyla4"]
+[gd_scene load_steps=29 format=3 uid="uid://rcfjmofbyla4"]
 
 [ext_resource type="Script" path="res://forge/forge.gd" id="1_xcp1w"]
 [ext_resource type="Texture2D" uid="uid://28t167ppbjcv" path="res://forge/Kiln.png" id="2_jpcl2"]
 [ext_resource type="Texture2D" uid="uid://bfpe3mgwcnr65" path="res://forge/KilnLight.png" id="3_iorp0"]
 [ext_resource type="Texture2D" uid="uid://ckaayw0qqcldu" path="res://forge/CrucibleBack.png" id="4_5h56y"]
 [ext_resource type="Texture2D" uid="uid://dwcydg2c56kjd" path="res://forge/Coals.png" id="5_gnx8k"]
+[ext_resource type="Script" path="res://forge/glow.gd" id="6_4od87"]
 [ext_resource type="Texture2D" uid="uid://c28jy82pc8ry" path="res://scenes/gameplay/Anvil.png" id="6_lihnq"]
+[ext_resource type="Script" path="res://forge/kiln_sparks.gd" id="7_nps6n"]
 [ext_resource type="Texture2D" uid="uid://dotvon1gna51q" path="res://scenes/gameplay/Vent.png" id="7_wv430"]
 [ext_resource type="PackedScene" uid="uid://q4wgqt3g46ha" path="res://forge/ingot_queue/ingot_queue.tscn" id="8_lo448"]
 [ext_resource type="Texture2D" uid="uid://djlheh2p02pyi" path="res://forge/CrucibleFront.png" id="9_6t116"]
@@ -144,6 +146,69 @@ color_ramp = SubResource("GradientTexture1D_t22kl")
 hue_variation_max = 0.17
 turbulence_enabled = true
 
+[sub_resource type="Animation" id="Animation_ees1a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Needle/Blur:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Needle/Blur2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Display:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_5jn21"]
 resource_name = "blur"
 length = 0.2
@@ -171,32 +236,41 @@ tracks/1/keys = {
 "update": 0,
 "values": [-0.174533, 0.0]
 }
-
-[sub_resource type="Animation" id="Animation_ees1a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Needle/Blur:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [Vector2(1, 0.99), Vector2(1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Needle/Blur2:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [Color(1.2, 1.2, 1.2, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Display:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.5, 1.5, 1.5, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_btooi"]
@@ -221,6 +295,8 @@ modulate = Color(2, 2, 2, 1)
 material = SubResource("CanvasItemMaterial_brd48")
 position = Vector2(246, 382)
 texture = ExtResource("3_iorp0")
+script = ExtResource("6_4od87")
+rate = 0.1
 
 [node name="CrucibleBack" type="Sprite2D" parent="."]
 position = Vector2(433, 364)
@@ -235,20 +311,24 @@ modulate = Color(2, 2, 2, 1)
 material = SubResource("CanvasItemMaterial_xvown")
 position = Vector2(410, 456)
 texture = ExtResource("5_gnx8k")
+script = ExtResource("6_4od87")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CoalGlow"]
 libraries = {
 "": SubResource("AnimationLibrary_bni2n")
 }
 
-[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
-visible = false
+[node name="KilnSparks" type="GPUParticles2D" parent="."]
 position = Vector2(266, 389)
 emitting = false
+amount = 30
 process_material = SubResource("ParticleProcessMaterial_jtlq6")
 lifetime = 2.0
+one_shot = true
+explosiveness = 0.8
 trail_enabled = true
 trail_lifetime = 0.05
+script = ExtResource("7_nps6n")
 
 [node name="Anvil" type="Sprite2D" parent="."]
 position = Vector2(1054, 565)
@@ -280,14 +360,15 @@ position = Vector2(550, 609)
 texture = ExtResource("10_0mvhl")
 
 [node name="HeatGauge" type="Node2D" parent="."]
+position = Vector2(73, 636)
 script = ExtResource("11_5yw36")
 
 [node name="Display" type="Sprite2D" parent="HeatGauge"]
-position = Vector2(87, 324)
+position = Vector2(18.5, -314)
 texture = ExtResource("11_pkvwt")
 
 [node name="Needle" type="Sprite2D" parent="HeatGauge"]
-position = Vector2(86, 326)
+position = Vector2(17.5, -312)
 rotation = -1.5708
 texture = ExtResource("12_7m4fb")
 offset = Vector2(0, -15)
@@ -303,7 +384,7 @@ texture = ExtResource("12_7m4fb")
 offset = Vector2(0, -15)
 
 [node name="Frame" type="Sprite2D" parent="HeatGauge"]
-position = Vector2(76, 453)
+position = Vector2(7.5, -185)
 texture = ExtResource("13_esh7c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HeatGauge"]
