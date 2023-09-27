@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=23 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_2lsjj"]
 [ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="1_6r5tg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://rcfjmofbyla4" path="res://forge/forge.tscn" id="6_u66sf"]
 [ext_resource type="Script" path="res://scenes/gameplay/equipment_spawn.gd" id="8_kk75l"]
 [ext_resource type="PackedScene" uid="uid://d0v5rlsvmsstn" path="res://ingot/equipment/equipment.tscn" id="14_728cc"]
+[ext_resource type="Texture2D" uid="uid://dgum8y02llvvt" path="res://UI/score/ScoreBackdrop.png" id="16_7hava"]
 [ext_resource type="Shader" path="res://scenes/gameplay/paper_texture.gdshader" id="16_b2nmg"]
 [ext_resource type="PackedScene" uid="uid://becw6yl857go5" path="res://UI/score/score.tscn" id="17_l2it6"]
 [ext_resource type="Texture2D" uid="uid://b12xa4qmqc6d3" path="res://scenes/gameplay/Vintage_Paper_Texture_(9789792113).jpg" id="17_mr81x"]
@@ -102,6 +103,13 @@ visible = false
 
 [node name="Timer" parent="CanvasLayer/UI" instance=ExtResource("21_heyl2")]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PaperOverlay" type="Sprite2D" parent="CanvasLayer"]
 z_index = 100
@@ -109,3 +117,9 @@ material = SubResource("ShaderMaterial_jwhga")
 position = Vector2(661, -352)
 texture = ExtResource("17_mr81x")
 metadata/_edit_lock_ = true
+
+[node name="ScoreBackdrop" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.494118)
+position = Vector2(733, 42)
+texture = ExtResource("16_7hava")
