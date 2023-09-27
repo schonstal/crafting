@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0v5rlsvmsstn"]
+
+[ext_resource type="Texture2D" uid="uid://bxfqhk4vh6shc" path="res://ingot/craftables/CraftArmor.png" id="1_08cjn"]
+[ext_resource type="Script" path="res://ingot/equipment/equipment.gd" id="1_54evo"]
+[ext_resource type="Texture2D" uid="uid://dfqvotpf4sqdq" path="res://ingot/craftables/CraftAxe.png" id="2_gdqmg"]
+[ext_resource type="Texture2D" uid="uid://dgo08o1rf772h" path="res://ingot/craftables/CraftHelmet.png" id="3_silxg"]
+[ext_resource type="Texture2D" uid="uid://bjs5mqh8saigw" path="res://ingot/craftables/CraftMace.png" id="4_2nkcm"]
+[ext_resource type="Texture2D" uid="uid://c1lug2iis4ubq" path="res://ingot/craftables/CraftShield.png" id="5_a6n2c"]
+[ext_resource type="Texture2D" uid="uid://dopvyb3w6cbxd" path="res://ingot/craftables/CraftSword.png" id="6_3mjir"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82g01"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_08cjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gdqmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_silxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2nkcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a6n2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3mjir")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Equipment" type="Node2D"]
+script = ExtResource("1_54evo")
+
+[node name="Graphic" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_82g01")

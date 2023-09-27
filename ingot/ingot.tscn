@@ -428,4 +428,5 @@ bus = &"Environment"
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_pt1bs")
+volume_db = -80.0
 bus = &"Environment"

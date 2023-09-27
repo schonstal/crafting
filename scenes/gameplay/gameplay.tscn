@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=22 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_2lsjj"]
 [ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="1_6r5tg"]
@@ -7,20 +7,14 @@
 [ext_resource type="Resource" uid="uid://c7btph4x2iayi" path="res://service/clock/clock.tres" id="2_lohjo"]
 [ext_resource type="PackedScene" uid="uid://ckpi8c0ctwu7s" path="res://player/player.tscn" id="3_b5cdq"]
 [ext_resource type="PackedScene" uid="uid://rcfjmofbyla4" path="res://forge/forge.tscn" id="6_u66sf"]
+[ext_resource type="Script" path="res://scenes/gameplay/equipment_spawn.gd" id="8_kk75l"]
+[ext_resource type="PackedScene" uid="uid://d0v5rlsvmsstn" path="res://ingot/equipment/equipment.tscn" id="14_728cc"]
 [ext_resource type="Shader" path="res://scenes/gameplay/paper_texture.gdshader" id="16_b2nmg"]
 [ext_resource type="PackedScene" uid="uid://becw6yl857go5" path="res://UI/score/score.tscn" id="17_l2it6"]
 [ext_resource type="Texture2D" uid="uid://b12xa4qmqc6d3" path="res://scenes/gameplay/Vintage_Paper_Texture_(9789792113).jpg" id="17_mr81x"]
 [ext_resource type="PackedScene" uid="uid://7nah8u56kjhb" path="res://UI/combo/active_combo.tscn" id="18_ma35h"]
 [ext_resource type="PackedScene" uid="uid://ii7pun5od11t" path="res://UI/health/health.tscn" id="20_6pa3y"]
 [ext_resource type="PackedScene" uid="uid://dybc22nlflf1c" path="res://UI/timer/timer.tscn" id="21_heyl2"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1cupr"]
-frequency = 1.0
-metadata/_preview_in_3d_space_ = true
-
-[sub_resource type="Curve" id="Curve_ilfnq"]
-_data = [Vector2(0, 1), 0.0, -0.0305559, 0, 0, Vector2(1, 0), -2.76061, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_rlkje"]
 offsets = PackedFloat32Array(0.044335, 0.108374, 0.497537, 1)
@@ -36,12 +30,23 @@ glow_strength = 1.33
 glow_hdr_threshold = 0.79
 adjustment_color_correction = SubResource("GradientTexture1D_nii78")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1cupr"]
+frequency = 1.0
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="Curve" id="Curve_ilfnq"]
+_data = [Vector2(0, 1), 0.0, -0.0305559, 0, 0, Vector2(1, 0), -2.76061, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jwhga"]
 shader = ExtResource("16_b2nmg")
 
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_2lsjj")
 clock = ExtResource("2_lohjo")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_juftt")
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 30.0
@@ -70,8 +75,10 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("3_b5cdq")]
 position = Vector2(820, 556)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_juftt")
+[node name="EquipmentSpawn" type="Node2D" parent="."]
+position = Vector2(1012, 468)
+script = ExtResource("8_kk75l")
+equipment_scene = ExtResource("14_728cc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
