@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=115 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
@@ -94,6 +94,7 @@
 [ext_resource type="PackedScene" uid="uid://low51rim76wg" path="res://vfx/impact/impact.tscn" id="86_cmitp"]
 [ext_resource type="Texture2D" uid="uid://c4is07m2kbcap" path="res://vfx/kenney particle pack/dirt_03.png" id="90_g7b0p"]
 [ext_resource type="Texture2D" uid="uid://dee8c7irr1fup" path="res://forge/Bellows.png" id="91_b3vr0"]
+[ext_resource type="AudioStream" uid="uid://pwd1jmmc4b2o" path="res://sfx/sizzle.wav" id="95_u1ksi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0pa78"]
 animations = [{
@@ -1178,3 +1179,8 @@ trail_enabled = true
 [node name="Bellows" type="Sprite2D" parent="."]
 position = Vector2(-291, 53)
 texture = ExtResource("91_b3vr0")
+
+[node name="SizzleSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("95_u1ksi")
+bus = &"Environment"

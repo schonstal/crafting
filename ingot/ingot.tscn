@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bg6y8dfi0f0dg"]
+[gd_scene load_steps=37 format=3 uid="uid://bg6y8dfi0f0dg"]
 
 [ext_resource type="Script" path="res://ingot/ingot.gd" id="1_2ll3i"]
 [ext_resource type="Texture2D" uid="uid://cck8fc7wiv80v" path="res://ingot/heat_gradient.tres" id="2_l38ip"]
@@ -25,6 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://bd6sqf3mjixiu" path="res://ingot/shatter/Shatter0008.png" id="23_s4qsf"]
 [ext_resource type="Texture2D" uid="uid://dotibymbfb4ln" path="res://ingot/shatter/Shatter0009.png" id="24_1q68b"]
 [ext_resource type="Texture2D" uid="uid://gmdlvn0by3c5" path="res://ingot/shatter/Shatter0010.png" id="25_yw674"]
+[ext_resource type="AudioStream" uid="uid://3uj0wt6q5y52" path="res://sfx/success.wav" id="26_bopnd"]
+[ext_resource type="AudioStream" uid="uid://u6hxd1ehg7ot" path="res://sfx/shatter.wav" id="27_g0534"]
+[ext_resource type="AudioStream" uid="uid://pjkx2dcai1t" path="res://sfx/hit_metal.wav" id="28_pt1bs"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ix27e"]
 animations = [{
@@ -414,3 +417,15 @@ sprite_frames = SubResource("SpriteFrames_ey8ux")
 libraries = {
 "": SubResource("AnimationLibrary_eg4p6")
 }
+
+[node name="SuccessSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_bopnd")
+bus = &"UI"
+
+[node name="FailSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_g0534")
+bus = &"Environment"
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_pt1bs")
+bus = &"Environment"
