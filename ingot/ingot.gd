@@ -22,8 +22,10 @@ static var combos = [
 var active := false :
   set(value):
     active = value
-    if active_combo:
+    if active_combo != null:
       active_combo.failed.disconnect(_on_combo_failed)
+      active_combo.progressed.disconnect(_on_combo_progressed)
+      active_combo.succeeded.disconnect(_on_combo_succeeded)
     if active:
       active_combo = combos[type]
       active_combo.ingot_type = type
@@ -52,6 +54,11 @@ func _on_combo_progressed() -> void:
     
 func _on_combo_succeeded() -> void:
   success_sound.play()
+  visible = false
+  await get_tree().create_timer(0.2).timeout
+  EventBus.shift_right.emit()
+  await success_sound.finished
+  queue_free()
   
 func fail():
   animation_player.play("shatter")
