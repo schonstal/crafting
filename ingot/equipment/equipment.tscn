@@ -15,6 +15,20 @@ animations = [{
 "texture": ExtResource("1_08cjn")
 }, {
 "duration": 1.0,
+"texture": ExtResource("3_silxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a6n2c")
+}],
+"loop": true,
+"name": &"armor",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_08cjn")
+}, {
+"duration": 1.0,
 "texture": ExtResource("2_gdqmg")
 }, {
 "duration": 1.0,
@@ -39,3 +53,4 @@ script = ExtResource("1_54evo")
 
 [node name="Graphic" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_82g01")
+animation = &"armor"

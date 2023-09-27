@@ -13,10 +13,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
   time_label.text = "%02d" % clock.time_left
-  if Input.is_action_just_pressed("up"):
-    clock.add_time(-3)
-  if Input.is_action_just_pressed("down"):
-    clock.add_time(3)
 
 func _on_time_increased() -> void:
   pulse_animation_player.play("increase")
