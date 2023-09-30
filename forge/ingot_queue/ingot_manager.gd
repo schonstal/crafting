@@ -16,10 +16,9 @@ func _ready() -> void:
   add_child(active_ingot)
   queue.recalculate_positions()
   
-  # This is not the right way to do this but I don't care.
-  EventBus.shift_left.connect(_on_shift_left)
   EventBus.shift_right.connect(_on_shift_right)
   EventBus.hide_ingot.connect(_on_hide_ingot)
+  EventBus.combo_succeeded.connect(_on_combo_succeeded)
   
 func _process(delta: float) -> void:
   for child in queue.get_children():
@@ -40,8 +39,11 @@ func _on_hide_ingot():
 
 func _on_shift_left():
   pass
-  
+
 func _on_shift_right():
+    shift_right()
+  
+func shift_right():
   if active_ingot != null:
     active_ingot.heat(-100)
     remove_child(active_ingot)
@@ -56,3 +58,20 @@ func _on_shift_right():
   add_child(active_ingot)
   
   queue.recalculate_positions()
+
+func _on_combo_succeeded() -> void:
+  if active_ingot != null:
+    remove_child(active_ingot)
+  
+  var ingot:Ingot = ingot_scene.instantiate()
+  ingot.visible = false
+  queue.push_front(ingot)
+  
+  active_ingot = queue.pop_back()
+  active_ingot.active = true
+  active_ingot.position = active_position
+  active_ingot.appear()
+  
+  await queue.recalculate_positions()
+  
+  ingot.appear()

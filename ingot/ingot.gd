@@ -55,8 +55,6 @@ func _on_combo_progressed() -> void:
 func _on_combo_succeeded() -> void:
   success_sound.play()
   visible = false
-  await get_tree().create_timer(0.2).timeout
-  EventBus.shift_right.emit()
   await success_sound.finished
   queue_free()
   

@@ -7,9 +7,12 @@ extends Node2D
 func _ready() -> void:
   clock.active_timer = game_timer
   game_timer.start()
+  EventBus.combo_succeeded.connect(_on_combo_succeeded)
+  EventBus.combo_failed.connect(_on_combo_failed)
+  EventBus.shift_right.emit()
 
 func _on_combo_succeeded() -> void:
-  pass
+  clock.add_time(3)
   
 func _on_combo_failed() -> void:
   pass

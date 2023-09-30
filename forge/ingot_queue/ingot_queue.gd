@@ -14,9 +14,13 @@ func pop_back() -> Ingot:
 
 func recalculate_positions():
   var index = 0
+  var tween:Tween
+  
   for child in get_children():
-    var tween = create_tween()
+    tween = create_tween()
     tween.tween_property(child, "position", Vector2(index * 80, 0), 0.2)\
          .set_trans(Tween.TRANS_CUBIC)\
          .set_ease(Tween.EASE_OUT)
     index += 1
+
+  await tween.finished
