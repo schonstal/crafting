@@ -33,6 +33,10 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/fontawesome/plugin.cfg", "res://addons/gut/plugin.cfg")
 
+[gui]
+
+theme/custom="res://UI/default_theme.tres"
+
 [input]
 
 previous={

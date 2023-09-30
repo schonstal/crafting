@@ -3,7 +3,7 @@ extends HBoxContainer
 @onready var direction: TextureRect = $Direction
 @onready var strike: TextureRect = $Strike
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var finished: Sprite2D = $Finished
+@onready var finished: Sprite2D = %Finished
 
 var assets = {
   "Down": preload("res://UI/combo/ComboArrowDown.png"),
@@ -32,3 +32,6 @@ func finish():
   tween.set_ease(Tween.EASE_OUT)
   tween.set_trans(Tween.TRANS_CUBIC)
   animation_player.play("finish")
+  
+func miss():
+  animation_player.play("miss")

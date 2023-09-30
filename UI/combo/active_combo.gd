@@ -24,12 +24,20 @@ func _on_combo_progressed() -> void:
   combo_v_box.get_child(progress).finish()
   progress += 1
 
+func _on_combo_failed() -> void:
+  combo_v_box.get_child(progress).miss()
+
 func change_combo(new_combo: Combo):
   progress = 0
+  
   if combo != null:
     combo.progressed.disconnect(_on_combo_progressed)
+    combo.failed.disconnect(_on_combo_failed)
+    
   combo = new_combo
   combo.progressed.connect(_on_combo_progressed)
+  combo.failed.connect(_on_combo_failed)
+  
   update_steps(combo)
   update_rect(combo)
   update_ingot(combo)
