@@ -59,8 +59,11 @@ func _on_combo_succeeded() -> void:
   queue_free()
   
 func fail():
-  animation_player.play("shatter")
   fail_sound.play()
+  animation_player.play("shatter")
+  await animation_player.animation_finished
+  EventBus.ingot_destroyed.emit()
+  queue_free()
   
 func _process(delta: float) -> void:
   graphic.modulate = Color(0.5, 0.5, 0.4, 0) + gradient_texture.gradient.sample(clamp(temp - 5, 0, 90)/100.0)
