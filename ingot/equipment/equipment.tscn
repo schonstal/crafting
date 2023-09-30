@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0v5rlsvmsstn"]
+[gd_scene load_steps=13 format=3 uid="uid://d0v5rlsvmsstn"]
 
 [ext_resource type="Texture2D" uid="uid://bxfqhk4vh6shc" path="res://ingot/craftables/CraftArmor.png" id="1_08cjn"]
 [ext_resource type="Script" path="res://ingot/equipment/equipment.gd" id="1_54evo"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bjs5mqh8saigw" path="res://ingot/craftables/CraftMace.png" id="4_2nkcm"]
 [ext_resource type="Texture2D" uid="uid://c1lug2iis4ubq" path="res://ingot/craftables/CraftShield.png" id="5_a6n2c"]
 [ext_resource type="Texture2D" uid="uid://dopvyb3w6cbxd" path="res://ingot/craftables/CraftSword.png" id="6_3mjir"]
+[ext_resource type="Texture2D" uid="uid://bagrrp8jbwvox" path="res://vfx/kenney particle pack/magic_05.png" id="8_1lvhi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_82g01"]
 animations = [{
@@ -48,9 +49,32 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_bjlot"]
+offsets = PackedFloat32Array(0.48125, 1)
+colors = PackedColorArray(10, 10, 1, 1, 1, 1, 0.1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_66gr1"]
+gradient = SubResource("Gradient_bjlot")
+use_hdr = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bq1nm"]
+emission_shape = 1
+emission_sphere_radius = 66.58
+particle_flag_disable_z = true
+gravity = Vector3(0, -100, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.01
+scale_max = 0.02
+color_ramp = SubResource("GradientTexture1D_66gr1")
+
 [node name="Equipment" type="Node2D"]
 script = ExtResource("1_54evo")
 
 [node name="Graphic" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_82g01")
 animation = &"armor"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_bq1nm")
+texture = ExtResource("8_1lvhi")
