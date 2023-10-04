@@ -1,0 +1,170 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2ss2pm43xs56"]
+
+[ext_resource type="Theme" uid="uid://tdwooohgvwc7" path="res://UI/default_theme.tres" id="1_227gj"]
+[ext_resource type="Texture2D" uid="uid://bn223pdda06gr" path="res://UI/combo/Parchment.png" id="2_t71o1"]
+[ext_resource type="Texture2D" uid="uid://cyleb6cmunic6" path="res://UI/score/Coin.png" id="3_ag4wy"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yvp25"]
+blend_mode = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tmsng"]
+color = Color(0.289063, 0.21875, 0.15625, 1)
+grow_begin = -50.0
+grow_end = -50.0
+thickness = 3
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_227gj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_yvp25")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.172549, 0.2, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 130
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 130
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_t71o1")
+patch_margin_left = 80
+patch_margin_top = 80
+patch_margin_right = 80
+patch_margin_bottom = 80
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.576471, 0.27451, 0.211765, 1)
+theme_override_colors/font_outline_color = Color(0.211765, 0.0823529, 0.0588235, 1)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/font_size = 70
+text = "game over"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tmsng")
+
+[node name="Spacer" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="Score" type="HBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buffer" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Header" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.768627, 0.631373, 0.458824, 1)
+theme_override_colors/font_outline_color = Color(0.356863, 0.270588, 0.2, 1)
+theme_override_constants/outline_size = 18
+text = "score"
+uppercase = true
+
+[node name="Spacer" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_ag4wy")
+stretch_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_type_variation = &"Parchment"
+theme_override_colors/font_color = Color(0.929412, 0.87451, 0.827451, 1)
+theme_override_colors/font_outline_color = Color(0.324219, 0.25, 0.175781, 1)
+theme_override_constants/outline_size = 15
+text = "58"
+
+[node name="Best" type="HBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buffer" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Header" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.768627, 0.631373, 0.458824, 1)
+theme_override_colors/font_outline_color = Color(0.356863, 0.270588, 0.2, 1)
+theme_override_constants/outline_size = 18
+text = "best"
+uppercase = true
+
+[node name="Spacer" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_ag4wy")
+stretch_mode = 2
+
+[node name="HighScoreLabel" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_type_variation = &"Parchment"
+theme_override_colors/font_color = Color(0.929412, 0.87451, 0.827451, 1)
+theme_override_colors/font_outline_color = Color(0.324219, 0.25, 0.175781, 1)
+theme_override_constants/outline_size = 15
+text = "2,765"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.290196, 0.219608, 0.156863, 1)
+bbcode_enabled = true
+text = "[center]press [img]res://UI/combo/ComboHeavyButton.png[/img] to play again[/center]"
+scroll_active = false
+shortcut_keys_enabled = false

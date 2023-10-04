@@ -179,9 +179,9 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(1, 2.37841),
 "update": 0,
-"values": [Color(10, 3, 3, 1), Color(0.637529, 0.124717, 0.135802, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_534b8"]
@@ -221,7 +221,8 @@ rotation = -0.319395
 scale = Vector2(1.1, 1.1)
 pivot_offset = Vector2(75, 40)
 size_flags_horizontal = 4
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.417969, 0.1875, 0.140625, 1)
+theme_override_colors/font_outline_color = Color(0.0196078, 0.0117647, 0.00784314, 1)
 theme_override_constants/outline_size = 10
 text = "miss!"
 horizontal_alignment = 1

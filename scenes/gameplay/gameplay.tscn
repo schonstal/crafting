@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b11l2h1ap31xm"]
+[gd_scene load_steps=28 format=3 uid="uid://b11l2h1ap31xm"]
 
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="1_2lsjj"]
 [ext_resource type="Script" path="res://scenes/gameplay/camera.gd" id="1_6r5tg"]
@@ -9,8 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://rcfjmofbyla4" path="res://forge/forge.tscn" id="6_u66sf"]
 [ext_resource type="Script" path="res://scenes/gameplay/equipment_spawn.gd" id="8_kk75l"]
 [ext_resource type="PackedScene" uid="uid://d0v5rlsvmsstn" path="res://ingot/equipment/equipment.tscn" id="14_728cc"]
+[ext_resource type="Theme" uid="uid://tdwooohgvwc7" path="res://UI/default_theme.tres" id="14_7678p"]
+[ext_resource type="Texture2D" uid="uid://bn223pdda06gr" path="res://UI/combo/Parchment.png" id="14_pb2s3"]
 [ext_resource type="Texture2D" uid="uid://dgum8y02llvvt" path="res://UI/score/ScoreBackdrop.png" id="16_7hava"]
 [ext_resource type="Shader" path="res://scenes/gameplay/paper_texture.gdshader" id="16_b2nmg"]
+[ext_resource type="Texture2D" uid="uid://cyleb6cmunic6" path="res://UI/score/Coin.png" id="16_hd86b"]
 [ext_resource type="PackedScene" uid="uid://becw6yl857go5" path="res://UI/score/score.tscn" id="17_l2it6"]
 [ext_resource type="Texture2D" uid="uid://b12xa4qmqc6d3" path="res://scenes/gameplay/Vintage_Paper_Texture_(9789792113).jpg" id="17_mr81x"]
 [ext_resource type="PackedScene" uid="uid://7nah8u56kjhb" path="res://UI/combo/active_combo.tscn" id="18_ma35h"]
@@ -38,6 +41,15 @@ metadata/_preview_in_3d_space_ = true
 [sub_resource type="Curve" id="Curve_ilfnq"]
 _data = [Vector2(0, 1), 0.0, -0.0305559, 0, 0, Vector2(1, 0), -2.76061, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yvp25"]
+blend_mode = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tmsng"]
+color = Color(0.137255, 0.0431373, 0.027451, 1)
+grow_begin = -50.0
+grow_end = -50.0
+thickness = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jwhga"]
 shader = ExtResource("16_b2nmg")
@@ -110,6 +122,151 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GameOver" type="Control" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_7678p")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/GameOver"]
+material = SubResource("CanvasItemMaterial_yvp25")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.156863, 0.172549, 0.2, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 80
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/UI/GameOver/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("14_pb2s3")
+patch_margin_left = 80
+patch_margin_top = 80
+patch_margin_right = 80
+patch_margin_bottom = 80
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.576471, 0.27451, 0.211765, 1)
+theme_override_colors/font_outline_color = Color(0.137255, 0.0431373, 0.027451, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 70
+text = "game over"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tmsng")
+
+[node name="Score" type="HBoxContainer" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buffer" type="Control" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="ScoreHeader" type="Label" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.576471, 0.27451, 0.211765, 1)
+theme_override_colors/font_outline_color = Color(0.137255, 0.0431373, 0.027451, 1)
+theme_override_constants/outline_size = 10
+text = "score"
+uppercase = true
+
+[node name="Spacer" type="Control" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("16_hd86b")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_type_variation = &"Parchment"
+theme_override_colors/font_color = Color(0.552941, 0.435294, 0.329412, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "10"
+
+[node name="Best" type="HBoxContainer" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Buffer" type="Control" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="BestHeader" type="Label" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.576471, 0.27451, 0.211765, 1)
+theme_override_colors/font_outline_color = Color(0.137255, 0.0431373, 0.027451, 1)
+theme_override_constants/outline_size = 10
+text = "best"
+uppercase = true
+
+[node name="Spacer" type="Control" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("16_hd86b")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_type_variation = &"Parchment"
+theme_override_colors/font_color = Color(0.552941, 0.435294, 0.329412, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+text = "2,765"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/UI/GameOver/MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_colors/default_color = Color(0.290196, 0.219608, 0.156863, 1)
+bbcode_enabled = true
+text = "[center]press [img]res://UI/combo/ComboHeavyButton.png[/img] to play again[/center]"
+scroll_active = false
+shortcut_keys_enabled = false
 
 [node name="PaperOverlay" type="Sprite2D" parent="CanvasLayer"]
 z_index = 100
