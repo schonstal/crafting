@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://rcfjmofbyla4"]
+[gd_scene load_steps=31 format=3 uid="uid://rcfjmofbyla4"]
 
 [ext_resource type="Script" path="res://forge/forge.gd" id="1_xcp1w"]
 [ext_resource type="Texture2D" uid="uid://28t167ppbjcv" path="res://forge/Kiln.png" id="2_jpcl2"]
@@ -109,12 +109,12 @@ _data = {
 "RESET": SubResource("Animation_dm6n4")
 }
 
-[sub_resource type="Gradient" id="Gradient_uw82h"]
+[sub_resource type="Gradient" id="Gradient_hbl8w"]
 offsets = PackedFloat32Array(0, 0.270936, 0.669951, 0.881773, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.519531, 0.144531, 0.03125, 1, 0.103482, 0.0663441, 0.04408, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_t22kl"]
-gradient = SubResource("Gradient_uw82h")
+gradient = SubResource("Gradient_hbl8w")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jtlq6"]
 lifetime_randomness = 0.52
@@ -130,6 +130,13 @@ scale_max = 3.0
 color_ramp = SubResource("GradientTexture1D_t22kl")
 turbulence_enabled = true
 
+[sub_resource type="Gradient" id="Gradient_uw82h"]
+offsets = PackedFloat32Array(0, 0.270936, 0.669951, 0.881773, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.519531, 0.144531, 0.03125, 1, 0.103482, 0.0663441, 0.04408, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_665hl"]
+gradient = SubResource("Gradient_uw82h")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fykda"]
 lifetime_randomness = 0.52
 emission_shape = 3
@@ -142,7 +149,7 @@ initial_velocity_max = 366.19
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_max = 3.0
-color_ramp = SubResource("GradientTexture1D_t22kl")
+color_ramp = SubResource("GradientTexture1D_665hl")
 hue_variation_max = 0.17
 turbulence_enabled = true
 

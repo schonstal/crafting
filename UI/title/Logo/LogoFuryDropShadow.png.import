@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eui22sk2kp4m"
-path="res://.godot/imported/LogoParchment.png-12c9f8c47db7b5b92914d506389465ed.ctex"
+uid="uid://tu8qqiokndbm"
+path="res://.godot/imported/LogoFuryDropShadow.png-44cb068e647727e0a8643667b8f5a62a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Logo/LogoParchment.png"
-dest_files=["res://.godot/imported/LogoParchment.png-12c9f8c47db7b5b92914d506389465ed.ctex"]
+source_file="res://UI/title/Logo/LogoFuryDropShadow.png"
+dest_files=["res://.godot/imported/LogoFuryDropShadow.png-44cb068e647727e0a8643667b8f5a62a.ctex"]
 
 [params]
 
