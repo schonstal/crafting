@@ -11,7 +11,6 @@ var time := 0.0
 func _process(delta: float) -> void:
   time -= delta
   if enabled && time < 0:
-    print(initial_offset)
     parent.offset = initial_offset + Vector2(
       randf_range(-2, 2),
       randf_range(0, 0)

@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float fade_progress : hint_range(0.0, 1.0, 0.1);
+uniform float fade_progress : hint_range(0., 1., 0.1);
 
 void fragment() {
   COLOR = texture(TEXTURE, UV);

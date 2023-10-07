@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2ss2pm43xs56"]
+[gd_scene load_steps=10 format=3 uid="uid://b2ss2pm43xs56"]
 
 [ext_resource type="Theme" uid="uid://tdwooohgvwc7" path="res://UI/default_theme.tres" id="1_227gj"]
+[ext_resource type="Script" path="res://UI/game_over/game_over.gd" id="2_najcw"]
 [ext_resource type="Texture2D" uid="uid://bn223pdda06gr" path="res://UI/combo/Parchment.png" id="2_t71o1"]
 [ext_resource type="Texture2D" uid="uid://cyleb6cmunic6" path="res://UI/score/Coin.png" id="3_ag4wy"]
 
@@ -13,6 +14,139 @@ grow_begin = -50.0
 grow_end = -50.0
 thickness = 3
 
+[sub_resource type="Animation" id="Animation_jj30q"]
+resource_name = "appear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect:size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(2.2974, 2, 1),
+"update": 0,
+"values": [Vector2(680, 160), Vector2(680, 480), Vector2(680, 439)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NinePatchRect:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 130)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NinePatchRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NinePatchRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_odfru"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(680, 160)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NinePatchRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 130)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NinePatchRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NinePatchRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fb222"]
+_data = {
+"RESET": SubResource("Animation_odfru"),
+"appear": SubResource("Animation_jj30q")
+}
+
 [node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -21,8 +155,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_227gj")
+script = ExtResource("2_najcw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("CanvasItemMaterial_yvp25")
 layout_mode = 1
 anchors_preset = 15
@@ -32,41 +168,33 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.156863, 0.172549, 0.2, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 130
-theme_override_constants/margin_right = 300
-theme_override_constants/margin_bottom = 130
-
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+clip_contents = true
 layout_mode = 2
+offset_left = 300.0
+offset_top = 130.0
+offset_right = 980.0
+offset_bottom = 290.0
 texture = ExtResource("2_t71o1")
 patch_margin_left = 80
 patch_margin_top = 80
 patch_margin_right = 80
 patch_margin_bottom = 80
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 647.0
+offset_bottom = 398.0
 theme_override_constants/margin_left = 36
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
 
-[node name="Header" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="Header" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.576471, 0.27451, 0.211765, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -80,23 +208,23 @@ text = "game over"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_tmsng")
 
-[node name="Spacer" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="Spacer" type="Control" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 
-[node name="Score" type="HBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="Score" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Buffer" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+[node name="Buffer" type="Control" parent="NinePatchRect/MarginContainer/VBoxContainer/Score"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="Header" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+[node name="Header" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Score"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.768627, 0.631373, 0.458824, 1)
 theme_override_colors/font_outline_color = Color(0.356863, 0.270588, 0.2, 1)
@@ -104,17 +232,18 @@ theme_override_constants/outline_size = 18
 text = "score"
 uppercase = true
 
-[node name="Spacer" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+[node name="Spacer" type="Control" parent="NinePatchRect/MarginContainer/VBoxContainer/Score"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MarginContainer/VBoxContainer/Score"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("3_ag4wy")
 stretch_mode = 2
 
-[node name="ScoreLabel" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Score"]
+[node name="ScoreLabel" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Score"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
@@ -124,15 +253,15 @@ theme_override_colors/font_outline_color = Color(0.324219, 0.25, 0.175781, 1)
 theme_override_constants/outline_size = 15
 text = "58"
 
-[node name="Best" type="HBoxContainer" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="Best" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Buffer" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+[node name="Buffer" type="Control" parent="NinePatchRect/MarginContainer/VBoxContainer/Best"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="Header" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+[node name="Header" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Best"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.768627, 0.631373, 0.458824, 1)
 theme_override_colors/font_outline_color = Color(0.356863, 0.270588, 0.2, 1)
@@ -140,17 +269,17 @@ theme_override_constants/outline_size = 18
 text = "best"
 uppercase = true
 
-[node name="Spacer" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+[node name="Spacer" type="Control" parent="NinePatchRect/MarginContainer/VBoxContainer/Best"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MarginContainer/VBoxContainer/Best"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("3_ag4wy")
 stretch_mode = 2
 
-[node name="HighScoreLabel" type="Label" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer/Best"]
+[node name="HighScoreLabel" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Best"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
@@ -160,11 +289,11 @@ theme_override_colors/font_outline_color = Color(0.324219, 0.25, 0.175781, 1)
 theme_override_constants/outline_size = 15
 text = "2,765"
 
-[node name="Spacer2" type="Control" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="Spacer2" type="Control" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_colors/default_color = Color(0.290196, 0.219608, 0.156863, 1)
@@ -172,3 +301,9 @@ bbcode_enabled = true
 text = "[center]press [img]res://UI/combo/ComboHeavyButton.png[/img] to play again[/center]"
 scroll_active = false
 shortcut_keys_enabled = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_fb222")
+}

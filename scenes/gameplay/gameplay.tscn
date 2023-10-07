@@ -52,7 +52,6 @@ clock = ExtResource("2_lohjo")
 environment = SubResource("Environment_juftt")
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 30.0
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -83,27 +82,30 @@ position = Vector2(1012, 468)
 script = ExtResource("8_kk75l")
 equipment_scene = ExtResource("14_728cc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Title" parent="." instance=ExtResource("15_80sew")]
+visible = false
 
-[node name="UI" type="Control" parent="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="HUD"]
 custom_minimum_size = Vector2(1280, 720)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Score" parent="CanvasLayer/UI" instance=ExtResource("17_l2it6")]
+[node name="Score" parent="HUD/UI" instance=ExtResource("17_l2it6")]
 offset_left = 6.0
 offset_top = 645.0
 offset_right = 46.0
 offset_bottom = 685.0
 
-[node name="ActiveCombo" parent="CanvasLayer/UI" instance=ExtResource("18_ma35h")]
+[node name="ActiveCombo" parent="HUD/UI" instance=ExtResource("18_ma35h")]
 
-[node name="Health" parent="CanvasLayer/UI" instance=ExtResource("20_6pa3y")]
+[node name="Health" parent="HUD/UI" instance=ExtResource("20_6pa3y")]
 visible = false
 
-[node name="Timer" parent="CanvasLayer/UI" instance=ExtResource("21_heyl2")]
+[node name="Timer" parent="HUD/UI" instance=ExtResource("21_heyl2")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,19 +115,15 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameOver" parent="CanvasLayer/UI" instance=ExtResource("14_b1u78")]
-visible = false
+[node name="GameOver" parent="HUD/UI" instance=ExtResource("14_b1u78")]
 layout_mode = 1
 
-[node name="Pause" type="Control" parent="CanvasLayer/UI"]
+[node name="Pause" type="Control" parent="HUD/UI"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Title" parent="CanvasLayer/UI" instance=ExtResource("15_80sew")]
-layout_mode = 1
-
-[node name="PaperOverlay" type="Sprite2D" parent="CanvasLayer"]
+[node name="PaperOverlay" type="Sprite2D" parent="HUD"]
 z_index = 100
 material = SubResource("ShaderMaterial_jwhga")
 position = Vector2(661, -352)

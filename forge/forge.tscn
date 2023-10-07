@@ -134,7 +134,7 @@ turbulence_enabled = true
 offsets = PackedFloat32Array(0, 0.270936, 0.669951, 0.881773, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.519531, 0.144531, 0.03125, 1, 0.103482, 0.0663441, 0.04408, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_665hl"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bny22"]
 gradient = SubResource("Gradient_uw82h")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fykda"]
@@ -149,7 +149,7 @@ initial_velocity_max = 366.19
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_max = 3.0
-color_ramp = SubResource("GradientTexture1D_665hl")
+color_ramp = SubResource("GradientTexture1D_bny22")
 hue_variation_max = 0.17
 turbulence_enabled = true
 

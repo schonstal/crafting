@@ -1,13 +1,48 @@
-[gd_scene load_steps=24 format=3 uid="uid://3l847k5o7wvp"]
+[gd_scene load_steps=31 format=3 uid="uid://3l847k5o7wvp"]
 
+[ext_resource type="Shader" path="res://UI/title/background.gdshader" id="1_7dux5"]
 [ext_resource type="Texture2D" uid="uid://cqyr36hewsiuw" path="res://UI/title/Logo/logoParchmentDropShadow.png" id="1_hvyir"]
+[ext_resource type="Script" path="res://UI/title/title.gd" id="1_n3yet"]
 [ext_resource type="Texture2D" uid="uid://eui22sk2kp4m" path="res://UI/title/Logo/LogoParchment.png" id="2_q5r7e"]
+[ext_resource type="Script" path="res://UI/title/heat_waves.gd" id="2_w0hji"]
 [ext_resource type="Texture2D" uid="uid://72d0a3r3oift" path="res://UI/title/Logo/LogoTempered.png" id="3_46lwt"]
 [ext_resource type="Shader" path="res://UI/title/tempered_text.gdshader" id="3_pmbte"]
 [ext_resource type="Texture2D" uid="uid://tu8qqiokndbm" path="res://UI/title/Logo/LogoFuryDropShadow.png" id="4_sbyar"]
 [ext_resource type="Shader" path="res://UI/title/fury_shine.gdshader" id="5_kp5e1"]
 [ext_resource type="Texture2D" uid="uid://cl1crdicq5vnx" path="res://UI/title/Logo/LogoFury.png" id="5_nypxn"]
 [ext_resource type="Script" path="res://UI/title/fury_text.gd" id="7_xv5gu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mcohg"]
+shader = ExtResource("1_7dux5")
+shader_parameter/heat_color = Color(0.827451, 0.537255, 0.176471, 1)
+shader_parameter/background_color = Color(0.160784, 0.0235294, 0.00392157, 0.698039)
+shader_parameter/progress = 0.96
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_plxx3"]
+
+[sub_resource type="Gradient" id="Gradient_1wcod"]
+offsets = PackedFloat32Array(0, 0.270936, 0.669951, 0.881773, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.992188, 0.890625, 0.503906, 1, 0.808594, 0.410156, 0.230469, 1, 0.519531, 0.144531, 0.03125, 1, 0.103482, 0.0663441, 0.04408, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_665hl"]
+gradient = SubResource("Gradient_1wcod")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_je01m"]
+lifetime_randomness = 0.52
+emission_shape = 3
+emission_box_extents = Vector3(640, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+flatness = 1.0
+gravity = Vector3(0, -200, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_665hl")
+hue_variation_max = 0.17
+turbulence_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jpknf"]
 shader = ExtResource("3_pmbte")
@@ -110,7 +145,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(612, 385)]
+"values": [Vector2(640, 360)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ndjov"]
@@ -158,7 +193,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_6sy5g"]
 resource_name = "appear"
-length = 1.5
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -221,39 +256,65 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = false
-tracks/5/path = NodePath("Fury:rotation")
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fury/Text:material:shader_parameter/alpha")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(1.2, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.174533, 0.0]
+"values": [0.0, 1.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Fury/Text:material:shader_parameter/alpha")
-tracks/6/interp = 1
+tracks/6/path = NodePath("Fury/Text:material:shader_parameter/mult_color")
+tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.2, 1.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Fury/Text:material:shader_parameter/mult_color")
-tracks/7/interp = 2
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(1.1, 1.2, 1.5),
 "transitions": PackedFloat32Array(1e+06, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(3.5, 3, 2, 1), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PressStart:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PressStart:modulate")
+tracks/8/interp = 2
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shake"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_qy553"]
@@ -321,26 +382,38 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Fury:rotation")
+tracks/5/path = NodePath("Fury/Text:material:shader_parameter/alpha")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.523599]
+"values": [0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Fury/Text:material:shader_parameter/alpha")
+tracks/6/path = NodePath("PressStart:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PressStart:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sncnn"]
@@ -349,13 +422,23 @@ _data = {
 "appear": SubResource("Animation_6sy5g")
 }
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aivdc"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-
 [node name="Title" type="Node2D"]
+script = ExtResource("1_n3yet")
+
+[node name="HeatWaves" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_mcohg")
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = SubResource("PlaceholderTexture2D_plxx3")
+script = ExtResource("2_w0hji")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(640, 720)
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_je01m")
+lifetime = 5.0
+trail_enabled = true
+trail_lifetime = 0.05
 
 [node name="Tempered" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -378,8 +461,7 @@ metadata/_edit_lock_ = true
 
 [node name="Fury" type="Node2D" parent="."]
 visible = false
-position = Vector2(612, 385)
-rotation = 0.523599
+position = Vector2(640, 360)
 
 [node name="Shadow" type="Sprite2D" parent="Fury"]
 position = Vector2(0, 4)
@@ -409,27 +491,27 @@ libraries = {
 }
 
 [node name="PressStart" type="Label" parent="."]
-offset_left = 424.0
+visible = false
+offset_left = 414.0
 offset_top = 596.0
-offset_right = 854.0
+offset_right = 844.0
 offset_bottom = 671.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 text = "Press any button to begin"
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PressStart"]
-autoplay = "pulse"
-speed_scale = 0.3
+speed_scale = 0.2
 libraries = {
 "": SubResource("AnimationLibrary_aw3x3")
 }
 
 [node name="AppearAnimation" type="AnimationPlayer" parent="."]
+autoplay = "appear"
 libraries = {
 "": SubResource("AnimationLibrary_sncnn")
 }
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(640, 720)
-process_material = SubResource("ParticleProcessMaterial_aivdc")
 
 [connection signal="timeout" from="Fury/Text/Timer" to="Fury/Text" method="_on_timer_timeout"]
