@@ -30,9 +30,9 @@ func start() -> void:
       return
     if attack.attack_name != step:
       current_combo.failed.emit()
-      EventBus.combo_failed.emit()
+      EventBus.combo_failed.emit(current_combo)
       return
     current_combo.progressed.emit()
       
   current_combo.succeeded.emit()
-  EventBus.combo_succeeded.emit()
+  EventBus.combo_succeeded.emit(current_combo)

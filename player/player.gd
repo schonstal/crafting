@@ -14,6 +14,6 @@ signal health_changed(new_health: float)
 func _ready() -> void:
   EventBus.combo_failed.connect(_on_combo_failed)
   
-func _on_combo_failed() -> void:
+func _on_combo_failed(combo:Combo) -> void:
   state_machine.transition_to("Hurt")
   health -= 1.0

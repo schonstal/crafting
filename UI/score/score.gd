@@ -9,10 +9,15 @@ func _ready() -> void:
   EventBus.score_changed.connect(_on_score_changed)
 
 func _on_score_changed(amount: int) -> void:
+  animation_player.stop()
+  
+  if amount > score:
+    animation_player.play("Increment")
+  else:
+    animation_player.play("Decrement")
+  
   score = amount
   points.text = string_with_commas(score)
-  animation_player.stop()
-  animation_player.play("Increment")
 
 func string_with_commas(value: int) -> String:
   var str_value: String = str(value)

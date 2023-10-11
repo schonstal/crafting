@@ -65,7 +65,7 @@ func shift_right() -> void:
   
   queue.recalculate_positions()
 
-func _on_combo_succeeded() -> void:
+func _on_combo_succeeded(_combo:Combo) -> void:
   _add_ingot()
 
 func _on_ingot_destroyed() -> void:

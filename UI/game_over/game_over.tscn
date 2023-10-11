@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2ss2pm43xs56"]
+[gd_scene load_steps=11 format=3 uid="uid://b2ss2pm43xs56"]
 
 [ext_resource type="Theme" uid="uid://tdwooohgvwc7" path="res://UI/default_theme.tres" id="1_227gj"]
 [ext_resource type="Script" path="res://UI/game_over/game_over.gd" id="2_najcw"]
@@ -7,6 +7,8 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yvp25"]
 blend_mode = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52qw2"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_tmsng"]
 color = Color(0.289063, 0.21875, 0.15625, 1)
@@ -195,6 +197,7 @@ theme_override_constants/margin_right = 4
 layout_mode = 2
 
 [node name="Header" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+material = SubResource("ShaderMaterial_52qw2")
 layout_mode = 2
 theme_override_colors/font_color = Color(0.576471, 0.27451, 0.211765, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

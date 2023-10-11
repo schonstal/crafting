@@ -6,6 +6,6 @@ extends Node2D
 func _ready() -> void:
   EventBus.combo_succeeded.connect(_on_combo_succeeded)
 
-func _on_combo_succeeded() -> void:
+func _on_combo_succeeded(_combo:Combo) -> void:
   var equipment := equipment_scene.instantiate()
   add_child(equipment)

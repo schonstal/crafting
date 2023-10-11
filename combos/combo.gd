@@ -17,6 +17,7 @@ var strikes = [
 
 var active := false
 var ingot_type = 0
+var points = 10
 
 signal failed
 signal succeeded

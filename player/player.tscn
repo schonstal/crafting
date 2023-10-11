@@ -1203,7 +1203,6 @@ shake_strength = Vector2(0, 3)
 script = ExtResource("84_3oxe7")
 
 [node name="ComboManager" type="Node" parent="."]
-unique_name_in_owner = true
 script = ExtResource("41_7i7le")
 
 [node name="InputHandler" type="Node" parent="."]
