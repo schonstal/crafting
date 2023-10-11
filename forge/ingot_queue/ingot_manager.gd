@@ -8,6 +8,11 @@ var ingot_scene := preload("res://ingot/ingot.tscn")
 var active_ingot:Ingot
 
 func _ready() -> void:
+  EventBus.shift_right.connect(_on_shift_right)
+  EventBus.hide_ingot.connect(_on_hide_ingot)
+  EventBus.combo_succeeded.connect(_on_combo_succeeded)
+  EventBus.ingot_destroyed.connect(_on_ingot_destroyed)
+
   for i in range(0, 4):
     var ingot:Ingot = ingot_scene.instantiate()
     queue.push_front(ingot)
@@ -18,12 +23,8 @@ func _ready() -> void:
   add_child(active_ingot)
   active_ingot.appear()
   
-  queue.recalculate_positions()
-  
-  EventBus.shift_right.connect(_on_shift_right)
-  EventBus.hide_ingot.connect(_on_hide_ingot)
-  EventBus.combo_succeeded.connect(_on_combo_succeeded)
-  EventBus.ingot_destroyed.connect(_on_ingot_destroyed)
+  await queue.recalculate_positions()
+  active_ingot.position = active_position
   
 func _process(delta: float) -> void:
   for child in queue.get_children():
@@ -81,10 +82,11 @@ func _add_ingot() -> void:
   active_ingot = queue.pop_back()
   active_ingot.visible = false
   active_ingot.active = true
-  active_ingot.position = active_position
   add_child(active_ingot)
-  active_ingot.appear()
   
   await queue.recalculate_positions()
+
+  active_ingot.appear()
+  active_ingot.position = active_position
   
   ingot.appear()
