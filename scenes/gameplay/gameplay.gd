@@ -6,7 +6,7 @@ extends Node2D
 
 func _ready() -> void:
   clock.active_timer = game_timer
-  game_timer.start()
+  #game_timer.start()
   
   clock.time_up.connect(_on_clock_time_up)
   

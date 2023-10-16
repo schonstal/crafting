@@ -88,7 +88,6 @@ script = ExtResource("8_kk75l")
 equipment_scene = ExtResource("14_728cc")
 
 [node name="Title" parent="." instance=ExtResource("15_80sew")]
-visible = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
