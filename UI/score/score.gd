@@ -7,6 +7,7 @@ var score = 0
 
 func _ready() -> void:
   EventBus.score_changed.connect(_on_score_changed)
+  EventBus.game_started.connect(_on_game_started)
 
 func _on_score_changed(amount: int) -> void:
   animation_player.stop()
@@ -27,3 +28,6 @@ func string_with_commas(value: int) -> String:
     str_value = str_value.insert(i, ",")
 
   return str_value
+
+func _on_game_started() -> void:
+  animation_player.play("Appear")

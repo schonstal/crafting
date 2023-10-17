@@ -13,7 +13,8 @@ func _unhandled_input(event: InputEvent) -> void:
   if !can_press || started:
     return
 
-  if event.is_action_pressed("strike"):  
+  if event.is_action_pressed("strike"):
+    started = true
     appear_animation.play("disappear")
     await appear_animation.animation_finished
     EventBus.emit_signal("game_started")
