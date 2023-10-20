@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2ss2pm43xs56"]
+[gd_scene load_steps=12 format=3 uid="uid://b2ss2pm43xs56"]
 
 [ext_resource type="Theme" uid="uid://tdwooohgvwc7" path="res://UI/default_theme.tres" id="1_227gj"]
 [ext_resource type="Script" path="res://UI/game_over/game_over.gd" id="2_najcw"]
@@ -78,6 +78,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FadeOut:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_jj30q"]
 resource_name = "appear"
@@ -143,10 +155,27 @@ tracks/4/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_eyam7"]
+resource_name = "fade_out"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeOut:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fb222"]
 _data = {
 "RESET": SubResource("Animation_odfru"),
-"appear": SubResource("Animation_jj30q")
+"appear": SubResource("Animation_jj30q"),
+"fade_out": SubResource("Animation_eyam7")
 }
 
 [node name="GameOver" type="Control"]
@@ -304,6 +333,15 @@ bbcode_enabled = true
 text = "[center]press [img]res://UI/combo/ComboHeavyButton.png[/img] to play again[/center]"
 scroll_active = false
 shortcut_keys_enabled = false
+
+[node name="FadeOut" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 2.0
