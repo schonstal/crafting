@@ -98,7 +98,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Score" parent="HUD/UI" instance=ExtResource("17_l2it6")]
-modulate = Color(1, 1, 1, 0)
 offset_left = 6.0
 offset_top = 645.0
 offset_right = 46.0

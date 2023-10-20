@@ -16,6 +16,69 @@ grow_begin = -50.0
 grow_end = -50.0
 thickness = 3
 
+[sub_resource type="Animation" id="Animation_odfru"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NinePatchRect:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(680, 160)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NinePatchRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 130)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("NinePatchRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("NinePatchRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_jj30q"]
 resource_name = "appear"
 length = 0.3
@@ -78,69 +141,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_odfru"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("NinePatchRect:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(680, 160)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("NinePatchRect:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(300, 130)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("NinePatchRect:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("NinePatchRect:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fb222"]
@@ -246,15 +246,15 @@ size_flags_vertical = 4
 texture = ExtResource("3_ag4wy")
 stretch_mode = 2
 
-[node name="ScoreLabel" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Score"]
+[node name="ScoreLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer/VBoxContainer/Score"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_type_variation = &"Parchment"
-theme_override_colors/font_color = Color(0.929412, 0.87451, 0.827451, 1)
 theme_override_colors/font_outline_color = Color(0.324219, 0.25, 0.175781, 1)
 theme_override_constants/outline_size = 15
-text = "58"
+bbcode_enabled = true
+text = "[wave][rainbow sat=0.8 val=4 freq=2]1,680[/rainbow][/wave]"
 
 [node name="Best" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -282,15 +282,15 @@ size_flags_vertical = 4
 texture = ExtResource("3_ag4wy")
 stretch_mode = 2
 
-[node name="HighScoreLabel" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/Best"]
+[node name="HighScoreLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer/VBoxContainer/Best"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 theme_type_variation = &"Parchment"
-theme_override_colors/font_color = Color(0.929412, 0.87451, 0.827451, 1)
 theme_override_colors/font_outline_color = Color(0.324219, 0.25, 0.175781, 1)
 theme_override_constants/outline_size = 15
-text = "2,765"
+bbcode_enabled = true
+text = "[wave][rainbow sat=0.8 val=4 freq=2]1,680[/rainbow][/wave]"
 
 [node name="Spacer2" type="Control" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
