@@ -2,7 +2,12 @@ extends Control
 
 var combo:Combo
 
+@export_category("Animation")
+@export var start_offset := Vector2(0, 52)
+
+@export_category("Container Size")
 @export var item_height := 25.0
+@export var combo_buffer_height := 105.0
 
 @onready var nine_patch_rect: NinePatchRect = $NinePatchRect
 @onready var instructions: Control = $Instructions
@@ -46,14 +51,14 @@ func update_ingot(combo: Combo) -> void:
   ingot.frame = combo.ingot_type
   
 func update_rect(combo: Combo) -> void:
-  nine_patch_rect.size.y = 52
-  nine_patch_rect.position.y = -52
+  nine_patch_rect.size.y = start_offset.y
+  nine_patch_rect.position.y = -start_offset.y
   
   instructions.size.y = 0
   
   var new_size = Vector2(
     nine_patch_rect.size.x,
-    combo.steps.size() * item_height + 105
+    combo.steps.size() * item_height + combo_buffer_height
   )
   var new_position = Vector2(
     nine_patch_rect.position.x,

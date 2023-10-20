@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=117 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
@@ -85,6 +85,7 @@
 [ext_resource type="Animation" uid="uid://c24122tb6l8x" path="res://player/frames/upheavy.res" id="67_ulse3"]
 [ext_resource type="Texture2D" uid="uid://fq8smqqacpxj" path="res://player/frames/up_light/UpLight0007.png" id="68_t0fem"]
 [ext_resource type="Texture2D" uid="uid://bnxqwy1qbpqth" path="res://player/frames/up_light/UpLight0008.png" id="69_h1bpr"]
+[ext_resource type="Script" path="res://player/states/wait.gd" id="70_fj6rc"]
 [ext_resource type="Texture2D" uid="uid://c2nojyatuquel" path="res://player/frames/up_light/UpLight0009.png" id="70_yw3d1"]
 [ext_resource type="Texture2D" uid="uid://cdr8kf0pf4q1k" path="res://player/frames/up_light/UpLight0010.png" id="71_t4asg"]
 [ext_resource type="Texture2D" uid="uid://dmo1ivie06v0t" path="res://forge/PistonChain.png" id="83_fhi5i"]
@@ -1130,7 +1131,10 @@ libraries = {
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_x2itd")
-initial_state = NodePath("Idle")
+initial_state = NodePath("Wait")
+
+[node name="Wait" type="Node" parent="StateMachine"]
+script = ExtResource("70_fj6rc")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_l0tvf")
