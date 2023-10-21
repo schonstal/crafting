@@ -15,6 +15,7 @@ func _ready() -> void:
 
   for i in range(0, 4):
     var ingot:Ingot = ingot_scene.instantiate()
+    ingot.temp = 100.0
     queue.push_front(ingot)
     
   queue.recalculate_positions()

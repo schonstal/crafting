@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ScoreService" load_steps=2 format=3 uid="uid://bjg4cojsmpk73"]
+
+[ext_resource type="Script" path="res://service/score/score.gd" id="1_wtc0d"]
+
+[resource]
+script = ExtResource("1_wtc0d")
+save_path = "user://save.tres"

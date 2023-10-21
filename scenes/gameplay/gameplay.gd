@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var clock: Clock
+@export var score_service: ScoreService
 
 @onready var game_timer: Timer = $GameTimer
 @onready var ui: Control = $HUD/UI

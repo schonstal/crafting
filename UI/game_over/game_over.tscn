@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2ss2pm43xs56"]
+[gd_scene load_steps=13 format=3 uid="uid://b2ss2pm43xs56"]
 
 [ext_resource type="Theme" uid="uid://tdwooohgvwc7" path="res://UI/default_theme.tres" id="1_227gj"]
 [ext_resource type="Script" path="res://UI/game_over/game_over.gd" id="2_najcw"]
 [ext_resource type="Texture2D" uid="uid://bn223pdda06gr" path="res://UI/combo/Parchment.png" id="2_t71o1"]
 [ext_resource type="Texture2D" uid="uid://cyleb6cmunic6" path="res://UI/score/Coin.png" id="3_ag4wy"]
+[ext_resource type="Resource" uid="uid://bjg4cojsmpk73" path="res://service/score/score.tres" id="3_yhrhr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yvp25"]
 blend_mode = 3
@@ -187,6 +188,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_227gj")
 script = ExtResource("2_najcw")
+score_service = ExtResource("3_yhrhr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

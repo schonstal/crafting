@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://ckpi8c0ctwu7s"]
+[gd_scene load_steps=118 format=3 uid="uid://ckpi8c0ctwu7s"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vosrb"]
 [ext_resource type="Script" path="res://util/state_machine/state_machine.gd" id="2_x2itd"]
@@ -94,6 +94,7 @@
 [ext_resource type="Texture2D" uid="uid://btc14qntdb0yr" path="res://forge/BottomtPiston.png" id="84_i1nc4"]
 [ext_resource type="Texture2D" uid="uid://c0a12808ky4sr" path="res://forge/TopPiston.png" id="85_v8jcg"]
 [ext_resource type="PackedScene" uid="uid://low51rim76wg" path="res://vfx/impact/impact.tscn" id="86_cmitp"]
+[ext_resource type="Script" path="res://player/states/game_over.gd" id="89_q6ich"]
 [ext_resource type="Texture2D" uid="uid://c4is07m2kbcap" path="res://vfx/kenney particle pack/dirt_03.png" id="90_g7b0p"]
 [ext_resource type="Texture2D" uid="uid://dee8c7irr1fup" path="res://forge/Bellows.png" id="91_b3vr0"]
 [ext_resource type="AudioStream" uid="uid://pwd1jmmc4b2o" path="res://sfx/sizzle.wav" id="95_u1ksi"]
@@ -1205,6 +1206,9 @@ shake_strength = Vector2(0, 3)
 
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("84_3oxe7")
+
+[node name="GameOver" type="Node" parent="StateMachine"]
+script = ExtResource("89_q6ich")
 
 [node name="ComboManager" type="Node" parent="."]
 script = ExtResource("41_7i7le")
